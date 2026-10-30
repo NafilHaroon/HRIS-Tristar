@@ -1,0 +1,102 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="EmpDocumentController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Employee Documents</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Employee from lookup list" />
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnEdit" title="Click to edit Employee Document List" class="edit" />
+                                <button type="button" id="btnDelete" title="Click to delete all documents pertaining to this Employee" class="delete" onclick="$('#dialog-delete').dialog('open');" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Employee</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtEmployeeCode" ng-model="EmpDocument.EmployeeCode" ng-keyup="$event.keyCode == 13  ? getEmployeeByCode(EmpDocument.EmployeeCode) : null" maxlength="10" class="tb150 tbUC" />
+                        </td>
+                        <td>
+                            <label>Employee Name</label>
+                        </td>
+                        <td colspan="3">
+                            <input readonly type="text" ng-model="EmpDocument.EmployeeName" class="tb300" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <div class="divDocumentGrid">
+                                <div class="divToolbar">
+                                    <button ng-click="onAddDocument()" class="add" title="Add New Document" ng-show="!EmpDocument.AddNew"></button>
+                                </div>
+                                <div ng-show="EmpDocument.AddNew" style="width: 80vw; height: 5vw; background-color:lightcyan;">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <label class="mandatoryKey">Document Type</label>
+                                            </td>
+                                            <td>
+                                                <select ng-options="dt.DocumentTypeId as dt.DocumentTypeName for dt in lstDocumentType" ng-model="EmpDocument.DocTypeId" class="form-control tb200" id="ddDocumentType">
+                                                    <option disabled value="">-Select Document Type-</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="file" name="fUpload" style="width:25vw;"
+                                                       accept="application/pdf, application/vnd.ms-excel, image/gif, image/jpeg"
+                                                       data-val="true" id="fuAttachment"
+                                                       data-val-accept="Sorry, we only accept Excel & PDF format."
+                                                       title="Click to upload employee document against this row" />
+                                            </td>
+                                            <td>
+                                                <label class="mandatoryKey">Expiry Date</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="EmpDocument.ExpiryDate" id="dpExpiry" maxlength="11"
+                                                       class="form-control dateField" />
+                                            </td>
+                                            <td>
+                                                <label class="mandatoryKey">Reminder Days</label>
+                                            </td>
+                                            <td>
+                                                <input type="number" ng-model="EmpDocument.ReminderDays" maxlength="3" class="form-control tb70 tbRA" />
+                                            </td>
+                                            <td>
+                                                <button type="button" id="btnUpload" ng-click="onUpload()" title="Click to upload the Selected Document" class="upload" />
+                                                <button ng-click="onUndoDocument()" class="undo" title="Cancel Document Addition"></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div ag-grid="grdOptDocument" id="grdDocument" class="ag-theme-fresh" style="height:80%; width:auto; max-width:100%;"></div>
+                            </div>
+                        </td>
+                        <td/>
+                        <td colspan="2">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Scripts/Agility/DateHelper.js' type="text/javascript"></script>
+    <script src='~/Areas/Master/JS/EmpDocument.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <link href='~/Scripts/jQuery/jquery.ui.datepicker.css' rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Master/CSS/EmpDocument.css" rel="stylesheet" type="text/css" />
+</div>

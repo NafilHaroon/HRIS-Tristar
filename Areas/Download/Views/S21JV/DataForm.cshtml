@@ -1,0 +1,45 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="S21JVController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">S21 Payroll JV</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button type="button" id="btnExtract" ng-click="tbExtract()" title="Click to extract Employee(s) default Deduction setup on selected criteria" class="download" />
+                                <button type="button" id="btnExport" ng-click="tbExport()" class="export" title="Click to Export the data" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Salary Period</label>
+                        </td>
+                        <td>
+                            <select ng-options="p.PeriodId as p.PeriodName for p in lstPeriod"
+                                    ng-model="S21JV.PeriodId" class="form-control tb200" id="ddPeriod">
+                                <option disabled value="">-Select Period-</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <div class="divS21JVGrid">
+                                <div ag-grid="grdOptS21JV" id="grdS21JV" class="ag-theme-bootstrap" style="height: 100%; width:auto; max-width:100%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Download/JS/S21JV.js' type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="~/Areas/Download/CSS/S21JV.css" />
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+</div>
+

@@ -1,0 +1,54 @@
+ZAWIN MUSTAFA (TSTS923619 / Employee ID 3598) - INCOME TAX UPDATE WORKSHEET
+============================================================================
+Period: 202609 (September 2026)   |   Tax Year: 2027 (Jul 2026 - Jun 2027)
+Date: 2026-09-15
+
+----------------------------------------------------------------------------
+1. CURRENT CALCULATION (as per system today)
+----------------------------------------------------------------------------
+
+  Taxable Income (annualized) ......................... 8,259,480
+  Total Tax (annual liability) ......................... 1,864,818
+  Tax already accounted (YTD posted Jul+Aug
+      + existing credit) ................................ 273,742
+  Existing Tax Credit already applied .................... 61,116
+  Remaining balance to collect
+      (1,864,818 - 273,742 - 61,116) ................... 1,529,960
+  Months left (Sept - Jun) ..................................... 10
+  Monthly tax (system output) .............................. 152,996
+
+----------------------------------------------------------------------------
+2. QUESTIONS FOR HR / FINANCE (answers needed before update)
+----------------------------------------------------------------------------
+
+  Q1. Tax Credit category applicable to this employee:
+      ____________________________________________________
+
+  Q2. Actual claimed amount (investment / premium /
+      contribution / donation), with proof:
+      Rs. ________________________________________________
+
+  Q3. Is this credit approved and documented? (Yes/No):
+      ____________________________________________________
+
+  Q4. Does this apply for the full remaining tax year
+      (Sept 2026 - Jun 2027) or is it one-time?
+      ____________________________________________________
+
+  Q5. Is Total Tax (Rs. 1,864,818) still confirmed correct?
+      ____________________________________________________
+
+----------------------------------------------------------------------------
+3. NEXT / UPDATED CALCULATION (to be filled once answers received)
+----------------------------------------------------------------------------
+
+  Taxable Income (annualized) .......................... 8,259,480  (unchanged, unless Q5 says otherwise)
+  Total Tax (annual liability) .......................... 1,864,818  (unchanged, unless Q5 says otherwise)
+  Tax already accounted (YTD posted Jul+Aug) .............. 273,742  (unchanged - already posted)
+  New Tax Credit (existing 61,116 + new amount from Q2) .. __________
+  New Remaining balance to collect
+      (Total Tax - 273,742 - New Tax Credit) ............. __________
+  Months left (Sept - Jun) ..................................... 10
+  New Monthly tax (Remaining balance / 10) ................ __________
+                                                                    (target: 133,944)
+

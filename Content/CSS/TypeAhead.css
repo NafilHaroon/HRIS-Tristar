@@ -1,0 +1,24 @@
+﻿ul.dropdown-menu > li {
+    background-color: lightcyan;
+}
+
+ul.dropdown-menu > li > a {
+    color: green;
+}
+
+ul.dropdown-menu > li:nth-child(odd) {
+    background-color: mistyrose;
+}
+
+ul.dropdown-menu > li:nth-child(odd) > a {
+    color: blue;
+}
+
+ul.dropdown-menu > li.active {
+    text-decoration: underline;
+    background-color: blue;
+}
+
+ul.dropdown-menu > li.active > a {
+    color: white;
+}

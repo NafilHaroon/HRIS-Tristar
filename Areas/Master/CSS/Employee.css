@@ -1,0 +1,102 @@
+﻿.cssEmpTab {
+    height: 53vh;
+    /*overflow:auto;
+    float: left;*/
+    border: 1pt inset green;
+}
+
+.divEmpDetail {
+    height: 45vh;
+    /*float: left;*/
+    overflow: auto;
+    width: auto;
+}
+
+.tblEmpDetail
+{
+    height: 43vh;
+    width:auto;
+}
+
+.tblEmpDetail tbody
+{
+    height: 42.25vh;
+     width:auto;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0.25rem;
+    text-indent: 0px;
+    width: 60px;
+    height: 50px;
+}
+
+.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 75px;
+}
+
+.navlinkImg {
+    height:100%; 
+    width:100%;
+}
+
+.tblEmployeeTab {
+    height: 60vh;
+}
+
+.tblEmployeeTab tr td:nth-child(odd)
+{
+    width: 7vw;
+    text-align: left;
+}
+
+.tblEmployeeTab tr td:nth-child(even) {
+    width: 10vw;
+}
+
+.divSalaryScreen {
+    width: 80vw;
+    height: 60vh;
+    float: left;
+}
+
+.divSalaryGrid {
+    width: 30vw;
+    height: 60vh;
+    float: left;
+}
+
+.divSeparator {
+    height: 60vh;
+    width: 10vw;
+    float: left;
+}
+
+.divToolbar {
+    height: 35px;
+    width: 30vw;
+}
+
+.divFamilyGrid {
+    width: 70vw;
+    height: 60vh;
+    float: left;
+}
+
+.divEntitlementGrid {
+    width: 86vw;
+    height: 60vh;
+    float: left;
+}
+
+.md-label {
+    min-width: 150px;
+    word-wrap: break-word;
+    white-space: nowrap; /* Newer versions of Chrome/Safari*/
+    /*-webkit-flex-wrap: wrap;*/
+    /*word-break: break-word;*/
+}

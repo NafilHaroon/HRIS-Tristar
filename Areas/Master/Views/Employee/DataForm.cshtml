@@ -1,0 +1,170 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="EmployeeController" ng-init="formLoaded()" id="ngForm">
+        <form id="frmEmployee">
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Employee</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Employee from lookup list"></button>
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing Employee" class="recall"></button>
+                                <button type="button" id="btnAdd" ng-click="tbAdd()" title="Click to create new Employee" class="add"></button>
+                                <button type="button" id="btnEdit" title="Click to edit this Employee" class="edit"></button>
+                                <button type="button" id="btnDelete" title="Click to delete this Employee" class="delete" onclick="$('#dialog-delete').dialog('open');"></button>
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save"></button>
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo"></button>
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit"></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="primaryKey">Emp Code</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtEmployeeCode" ng-model="Employee.EmployeeCode" ng-keyup="$event.keyCode == 13  ? getEmployeeByCode(Employee.EmployeeCode) : null" maxlength="10" class="tb150 tbUC" />
+                            <hidden ng-model="Employee.EmployeeId"></hidden>
+                        </td>
+                        <td />
+                        <td>
+                            <label class="mandatoryKey">Status</label>
+                        </td>
+                        <td>
+                            <select ng-options="s.StatusId as s.StatusName for s in lstStatus" ng-model="Employee.StatusId">
+                                <option disabled value="">-Select Status-</option>
+                            </select>
+                        </td>
+                        <td />
+                        <td colspan="2" />
+
+                        <td rowspan="2" colspan="2">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Emp Name</label>
+                        </td>
+                        <td colspan="2">
+                            <div class="float-left">
+                                <select ng-options="st.SalutationId as st.SalutationName for st in lstSalutation" ng-model="Employee.SalutationId" class="form-control" style="width:60px; -webkit-appearance:none;">
+                                    <option disabled value="">-Select Employee Salutation-</option>
+                                </select>
+                            </div>
+                            <input type="text" id="txtEmployeeName" ng-model="Employee.EmployeeName" maxlength="50" class="form-control tb200" />
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">Father Name</label>
+                        </td>
+                        <td colspan="2">
+                            <input type="text" ng-model="Employee.HeadName" maxlength="50" class="form-control tb300" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <div class="row" style="border:1px dotted lightgray; margin:5px; padding-top:5px;">
+                                <ul class="nav nav-pills flex-column col-sm-1 col-md-1 col-lg-1" role="tablist" aria-orientation="vertical">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" role="tab" href="#tbEmpJobDetail" data-toggle="pill" accesskey="tabPanel" title="Job Details">
+                                            <img src="~/Content/Icon/JobDetail.jpg" class="navlinkImg" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" role="tab" href="#tbEmpPersonal" data-toggle="pill" accesskey="tabPanel" title="Personal Details">
+                                            <img src="~/Content/Icon/Personal.png" class="navlinkImg" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" role="tab" href="#tbEmpSalary" data-toggle="pill" accesskey="tabPanel" title="Salary & Cost Allocation">
+                                            <img src="~/Content/Icon/Salary.png" class="navlinkImg" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" role="tab" href="#tbEmpFamily" data-toggle="pill" accesskey="tabPanel" title="Family Info & Emergency Contacts">
+                                            <img src="~/Content/Icon/FamilyCircleIcon.png" class="navlinkImg">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" role="tab" href="#tbEmpEntitlement" data-toggle="pill" accesskey="tabPanel" title="Company provided/maintained Entitlements">
+                                            <img src="~/Content/Icon/Asset.png" class="navlinkImg">
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="col-sm-11 col-md-11 col-lg-11">
+                                    <div class="tab-content">
+                                        <div id="tbEmpJobDetail" class="tab-pane fade show active" role="tabpanel">
+                                            @Html.Partial("_EmpJobDetail")
+                                        </div>
+                                        <div id="tbEmpPersonal" class="tab-pane fade" role="tabpanel">
+                                            @Html.Partial("_EmpPersonalInfo")
+                                        </div>
+                                        <div id="tbEmpSalary" class="tab-pane fade" role="tabpanel">
+                                            <div class="divSalaryScreen">
+                                                <div class="divSalaryGrid">
+                                                    <div class="divToolbar">
+                                                        <button ng-click="onAddSalary()" class="add" title="Add Salary Head"></button>
+                                                        <button ng-click="onDeleteSalary()" class="delete" title="Remove Salary Head"></button>
+                                                    </div>
+                                                    <div ag-grid="grdOptSalary" id="grdSalary" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+                                                </div>
+                                                <div class="divSeparator"></div>
+                                                <div class="divSalaryGrid">
+                                                    <div class="divToolbar">
+                                                        <button ng-click="onAddCostAllocation()" class="add" title="Add Cost Alloc"></button>
+                                                        <button ng-click="onDeleteCostAllocation()" class="delete" title="Delete Cost Allocation Line"></button>
+                                                    </div>
+                                                    <div ag-grid="grdOptCostAlloc" id="grdCostAllocation" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+                                                </div>
+                                            </div>
+                                            @*@Html.Partial("_EmpSalary_CostAllocation")*@
+                                            @*<ng-include src="'/HRIS/Areas/Master/Views/Employee/_EmpSalary_CostAllocation.html'" />*@
+                                        </div>
+                                        <div id="tbEmpFamily" class="tab-pane fade" role="tabpanel">
+                                            <div class="divFamilyGrid">
+                                                <div class="divToolbar">
+                                                    <button ng-click="onAddFamily()" class="add" title="Add Salary Head"></button>
+                                                    <button ng-click="onDeleteFamily()" class="delete" title="Remove Salary Head"></button>
+                                                </div>
+                                                <div ag-grid="grdOptFamily" id="grdFamily" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+                                            </div>
+                                            @*@Html.Partial("_EmpFamily")*@
+                                        </div>
+                                        <div id="tbEmpEntitlement" class="tab-pane fade" role="tabpanel">
+                                            <div class="divEntitlementGrid">
+                                                <div class="divToolbar">
+                                                    <button ng-click="onAddEntitlement()" class="add" title="Add Entitlement to Employee Profile"></button>
+                                                    <button ng-click="onDeleteEntitlement()" class="delete" title="Remove Entitlement from Employee Profile"></button>
+                                                </div>
+                                                <div ag-grid="grdOptEntitlement" id="grdEntitlement" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+                                            </div>
+                                            @*@Html.Partial("_EmpEntitlement")*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <footer>
+                <ng-include src="'/HRIS/Helper/Pages/Footer.html'" />
+            </footer>
+
+        </form>
+    </div>
+    <script src='~/Scripts/Agility/DateHelper.js' type="text/javascript"></script>
+    <script src='~/Areas/Master/JS/Employee.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <link href='~/Scripts/jQuery/jquery.ui.datepicker.css' rel="stylesheet" type="text/css"  />
+    <link href='~/Areas/Master/CSS/Employee.css' rel="stylesheet" type="text/css" />
+</div>

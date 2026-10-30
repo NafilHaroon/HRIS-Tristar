@@ -1,0 +1,247 @@
+﻿<fieldset>                            
+    <table id="tblJobDetail" class="tblEmployeeTab">
+        <tr>
+            <td>
+                <label class="mandatoryKey">Branch</label>
+            </td>
+            <td>
+                <select ng-options="b.BranchCode as b.BranchName for b in lstBranch" ng-model="Employee.BranchCode" class="form-control tb200">
+                    <option disabled value="">-Select Branch-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey">Department</label>
+            </td>
+            <td>
+                <select ng-options="d.DepartmentCode as d.DepartmentName for d in lstDepartment" ng-model="Employee.DepartmentCode" class="form-control tb200">
+                    <option disabled value="">-Select Department-</option>
+                </select>
+            </td>
+            <td>
+                <label class="mandatoryKey">Grade</label>
+            </td>
+            <td>
+                <select ng-options="g.GradeId as g.GradeName for g in lstGrade" ng-model="Employee.GradeId" class="form-control tb200">
+                    <option disabled value="">-Select Grade-</option>
+                </select>
+            </td>
+            <td colspan="2">
+                <md-switch id="chkDisabled" ng-disabled="true" ng-model="Employee.DisabledQuota"> {{Employee.DisabledQuota ? "Disabled Quota" : "Standard Employment"}}</md-switch>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="mandatoryKey">Supervisor</label>
+            </td>
+            <td>
+                @*<md-autocomplete md-selected-item="Employee.SupervisorId" md-search-text="searchText"
+                         md-items="s.EmployeeId as s.EmployeeName for s in lstSupervisor" md-item-text="Employee.SupervisorId">
+            <span md-highlight-text="searchText">{{item.display}}</span>
+        </md-autocomplete>
+        md-menu-class="autocomplete-custom-template"*@
+                @*<input type="text" ng-model="Employee.SupervisorId"
+        uib-typeahead="s.EmployeeId as s.EmployeeName for s in lstSupervisor | filter:$viewValue | limitTo:8" class="form-control">*@
+                <select ng-options="s.EmployeeId as s.EmployeeName for s in lstSupervisor" ng-model="Employee.SupervisorId" class="form-control">
+                    <option disabled value="">-Select Supervisor-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey">Worker Type</label>
+            </td>
+            <td>
+                <select ng-options="wt.WorkerTypeId as wt.WorkerTypeName for wt in lstWorkerType" ng-model="Employee.WorkerTypeId" class="form-control">
+                    <option disabled value="">-Select Worker Type-</option>
+                </select>
+            </td>
+            <td>
+                <label class="mandatoryKey">Job Nature</label>
+            </td>
+            <td>
+                <select ng-options="jn.JobNatureId as jn.JobNatureName for jn in lstJobNature" ng-model="Employee.JobNatureId" class="form-control">
+                    <option disabled value="">-Select Job Nature-</option>
+                </select>
+            </td>
+            <td>
+                <label class="mandatoryKey">Designation</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.Designation" maxlength="60" class="form-control tb175" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Email</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.Email" maxlength="50" class="form-control tb175" />
+            </td>
+            <td>
+                <label>EOBI #</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.EOBINo" maxlength="13" class="form-control tb100" />
+            </td>
+
+            <td>
+                <label>ESS #</label>
+            </td>
+            <td>
+                <input ng-model="Employee.EmpPersonalInfo.ESSNo" maxlength="6" class="form-control tb100" />
+            </td>
+
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" ng-model="Employee.EmpPersonalInfo.IsSSMember" class="form-check-input" id="chkSessiMember" disabled />
+                    <label class="form-check-label" for="chkSessiMember">Is SESSI Member?</label>
+                </div>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.SESSINo" maxlength="50" class="form-control tb125"
+                       ng-if="Employee.EmpPersonalInfo.IsSSMember" placeholder="SESSI #" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey">Joining Date</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.JoiningDate" id="dpJoining" maxlength="11" 
+                       class="form-control dateField"/>
+            </td>
+
+            <td>
+                <label class="mandatoryKey">Confirmation Due Date</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.ConfirmationDueDate" id="dpConfirmationDue" maxlength="11" class="form-control dateField" />
+            </td>
+
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" ng-model="Employee.IsConfirmed" class="form-check-input" id="chkConfirmed" disabled />
+                    <label class="form-check-label mandatoryKey" for="chkConfirmed">{{Employee.IsConfirmed ? "Confirmed On" : "On Probation"}}</label>
+                </div>
+            </td>
+            <td>
+                <input ng-model="Employee.ConfirmationDate" id="dpConfirmation" maxlength="11" class="form-control dateField" ng-show="Employee.IsConfirmed" style=""/>
+            </td>
+            <td>
+                <label class="mandatoryKey">Life Insurance</label>
+            </td>
+            <td>
+                <input type="number" ng-model="Employee.LifeInsuranceCost" maxlength="12" class="form-control tb100 tbRA" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey">Payment Mode</label>
+            </td>
+            <td>
+                <select ng-options="pm.PaymentModeId as pm.PaymentModeName for pm in lstPaymentMode" ng-model="Employee.EmpPersonalInfo.PaymentModeId" class="form-control">
+                    <option disabled value="">-Select MoP-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey" ng-show="Employee.EmpPersonalInfo.PaymentModeId==1">Company Bank</label>
+            </td>
+            <td>
+                <select ng-options="cb.BankId as cb.BankName for cb in lstBank"
+                        ng-model="Employee.EmpPersonalInfo.CompanyBankId" ng-show="Employee.EmpPersonalInfo.PaymentModeId==1" class="form-control">
+                    <option value="">-Select Bank-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey" ng-show="Employee.EmpPersonalInfo.PaymentModeId==1">Bank A/c #</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.BankAccountNo" maxlength="30" class="form-control tb125" ng-show="Employee.EmpPersonalInfo.PaymentModeId==1" />
+            </td>
+
+            <td>
+                <label ng-show="Employee.EmpPersonalInfo.PaymentModeId==1">Bank Detail</label>
+            </td>
+            <td>
+                <textarea rows="2" cols="25" maxlength="200" ng-model="Employee.EmpPersonalInfo.BankDetail" class="form-control tb200" ng-show="Employee.EmpPersonalInfo.PaymentModeId==1"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey">Medical Plan</label>
+            </td>
+            <td>
+                <select ng-options="mp.MedicalPlanId as mp.MedicalPlanName for mp in lstMedicalPlan" ng-model="Employee.MedicalPlanId" class="form-control">
+                    <option disabled value="">-Select Medical Plan-</option>
+                </select>
+            </td>
+            <td>
+                <label class="mandatoryKey">Medical Cost</label>
+            </td>
+            <td>
+                <input type="number" ng-model="Employee.MedicalCost" maxlength="12" class="form-control tb100 tbRA" />
+            </td>
+            <td>
+                <label class="mandatoryKey">Hiring Type</label>
+            </td>
+            <td>
+                <select ng-options="ht.HiringTypeId as ht.HiringTypeName for ht in lstHiringType" 
+                        ng-model="Employee.HiringTypeId" class="form-control" id="ddHiringType">
+                    <option disabled value="">-Select Hiring Type-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey" ng-if="(Employee.HiringTypeId==2 || Employee.HiringTypeId==3)">Replacement For</label>
+                <label class="mandatoryKey" ng-if="Employee.HiringTypeId==4">ERF #</label>
+                <label class="mandatoryKey" ng-if="Employee.HiringTypeId==5">Project Name</label>
+                <label class="mandatoryKey" ng-if="Employee.HiringTypeId==6">Others</label>
+            </td>
+            <td>
+                <select ng-options="re.EmployeeId as re.EmployeeName for re in lstReplacement"
+                        ng-model="Employee.ReplacementEmployeeId" id="ddSeparationReplacementFor" ng-show="Employee.HiringTypeId==2" class="form-control">
+                    <option disabled value="">-Select Separated Employee-</option>
+                </select>
+                <select ng-options="sp.EmployeeId as sp.EmployeeName for sp in lstSupervisor"
+                        ng-model="Employee.ReplacementEmployeeId" id="ddPromotionReplacementFor" ng-show="Employee.HiringTypeId==3" class="form-control">
+                    <option disabled value="">-Select Promoted Employee-</option>
+                </select>
+
+                <input type="text" ng-model="Employee.HiringBasis" maxlength="50" class="form-control tb125" ng-if="Employee.HiringTypeId > 3" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey" ng-if="Employee.StatusId!=1">Separation Date</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.SeparationDate" id="dpSeparation" ng-show="Employee.StatusId!=1" class="form-control dateField" maxlength="11" />
+            </td>
+            <td>
+                <label class="mandatoryKey" ng-if="Employee.StatusId!=1">Reason For Seperation</label>
+            </td>
+            <td colspan="2" rowspan="2">
+                <textarea ng-if="Employee.StatusId!=1" rows="2" cols="50" maxlength="200" ng-model="Employee.ReasonForSeperation" class="form-control tb300"></textarea>
+            </td>
+        </tr>
+        <tr/>
+        <tr>
+            <td>
+                <label class="mandatoryKey">HFM Sub Category</label>
+            </td>
+            <td>
+                <select ng-options="sc.SubCategoryId as sc.SubCategoryName for sc in lstSubCategory"
+                        ng-model="Employee.HFMSubCategoryId" id="ddHFMSubCategory" class="form-control">
+                    <option disabled value="">-Select HFM Sub Category-</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+ </fieldset>

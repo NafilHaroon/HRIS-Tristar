@@ -1,0 +1,659 @@
+﻿html {
+    /*background: radial-gradient(ellipse farthest-corner at 360px 36px, #edbf60, #fff);*/ /*#edbf60*/
+    /*background: repeating-radial-gradient(circle, #a88d36, #e2e2e2);*/
+    background: radial-gradient(ellipse farthest-corner at 50vw 50vh, #a88d36, #e2e2e2);
+    margin: 0;
+    padding: 0;
+    height: 97vh;
+    width: 100vw;
+}
+
+body {
+    background: radial-gradient(circle, #f1eded, lightyellow); /*#fae3b3*/
+    height: 92vh;
+    width: 100vw;
+    color: #333;
+    font-size: -0.90em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    /*margin: 0;
+    padding: 0;*/
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    /*overflow: scroll;*/
+    overflow:auto;
+}
+
+footer {
+    height: 4vh; 
+    position:absolute;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+    bottom:0px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.mainTable {
+    width: 99vw;
+    column-count: 10;
+    border-collapse: collapse;
+    /*grid-column-sizing: minmax(6vw, 10vw);*/
+}
+
+.mainTable tr td:nth-child(odd){
+    width: 8vw;
+}
+
+.mainTable tr td:nth-child(even){
+    width: 11.50vw;
+}
+
+.primaryKey {
+    font-weight: bold;
+    color: maroon;
+}
+
+.mandatoryKey {
+    font-weight: bold;
+}
+
+.checkboxLabel {
+    color: blue;
+}
+
+.checkboxLabel[disabled] {
+    color: gray;
+}
+
+#container { position: relative; }
+#num1, #num2 { position: absolute; }
+#num1 { z-index: 1; }
+#num2 { z-index: 2; }
+
+/*a {
+    color: #333;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+}*/
+
+a:link, a:visited,
+a:active, a:hover {
+    color: #333;
+}
+
+a:hover {
+    background-color: none;
+}
+
+header, footer, hgroup,
+nav, section {
+    display: block;
+}
+
+mark {
+    background-color: #a6dbed;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+    vertical-align: bottom;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+/* site title
+----------------------------------------------------------*/
+.site-title {
+    color:#ff5900;
+    font-family: Comic Sans MS;
+    font-size:18pt;
+    margin: 0;
+}
+
+.site-subtitle {
+    color: #8d0c0c;
+    font-family: Lucida Sans Unicode;
+    font-size: 11pt;
+    margin: 0;
+}
+
+.form-title-bg {
+    background: repeating-radial-gradient(circle, #a88d36, #e2e2e2);
+}
+
+.form-title {
+    color: blue;
+    font-family: Lucida Sans Unicode;
+    font-size:18pt;
+    margin: 0;
+    text-align: left;
+}
+
+.form-subtitle {
+    color: maroon;
+    font-family: 'Monotype Corsiva';
+    font-size: 18pt;
+    margin: 0;
+    text-align: left;
+    border-bottom: double 2px blue;
+}
+
+/* forms */
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+fieldset legend {
+    display: none;
+}
+
+fieldset ol {
+    padding: 0;
+    list-style: none;
+}
+
+fieldset ol li {
+    padding-bottom: 5px;
+}
+
+input, textarea {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 10pt;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 200px;
+    resize: none;
+}
+
+input[disabled], textarea[disabled], select[disabled] {
+    background-color: lightyellow;
+    color: darkgray;
+    border: 1px inset darkgray;
+}
+
+input:focus, textarea:focus, select:focus {
+    border: 1px solid #a9a5ca;
+}
+
+input[type="checkbox"] {
+    background: transparent;
+    border: 0 none;
+    width: auto;
+    color: blue;
+}
+
+input[type=radio] {
+    background: transparent;
+    border: inherit;
+    width: auto;
+}
+
+input[type="submit"],
+input[type="button"],
+button {
+    background-color: #d3dce0;
+    border: 1px solid #787878;
+    cursor: pointer;
+    font-size: 10pt;
+        
+    padding: 5px;
+    margin-right: 8px;
+    width: auto;
+}
+
+td input[type="submit"],
+td input[type="button"],
+td button {
+    font-size: 1em;
+    padding: 4px;
+    margin-right: 4px;
+}
+
+input[type="select"], select {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 10pt;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 200px;
+}
+
+.error {
+    color: gray;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color:red;
+    font-family: 'Comic Sans MS'; /*'Monotype Corsiva';*/
+    font-weight: normal;
+    font-size: 11px;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000 !important;
+    background-color: #ffdb00;
+}
+
+.validation-summary-errors {
+    /*white-space: pre-wrap;*/
+    font-family: 'Comic Sans MS';
+    vertical-align: top;
+    text-align: left;
+    color: red;
+    font-size: 11px;
+    font-weight: bold;
+    border: groove 2px darkgray;
+    height: 15vh;
+    width: 18.5vw;
+    margin: 10px;
+    text-wrap: normal;
+    word-wrap: hyphenate;
+    overflow: auto;
+}
+
+.validation-summary-errors span {
+    font-weight: normal;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.divBody
+{
+    width: 98.5vw; 
+    height: 97vh;
+}
+
+input[readonly], textarea[readonly]
+{
+    background-color: #efede7;
+    color: brown;
+    font-weight: bold;
+    border: maroon dotted 1px;
+}
+
+.waitImgLarge
+{
+    height: 68%;
+    width: 88%;
+    left: 10px;
+    vertical-align: middle;
+}
+
+.waitImgSmall
+{
+    height: 85%;
+    width: 98%;
+    vertical-align: top;
+    align-content: center;
+}
+
+.deleteAlertImg
+{
+    height: 100px;
+    width: 100px;
+    vertical-align:middle;
+}
+
+td input[type="button"],
+td button {
+    font-size: 1em;
+    padding: 4px;
+    margin-right: 4px;
+}
+
+.half {
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    height: 100px;
+    width: 100px;
+    }
+
+.image {
+position: relative;
+float: left; /* optional */
+}
+
+.image .text {
+    position: absolute;
+    top: 1px; /* in conjunction with left property, decides the text position */
+    left: 30px;
+    width: 100px; /* optional, though better have one */
+    z-index: 999;
+}
+
+.errorinput {
+    color: #850000;
+    background: rgba(254, 186, 186, 0.5);
+    border: 1px solid #850000;
+}
+
+.errorMsg {
+    color: red;
+    font: 8px arial, verdana;
+}
+
+.dateField {
+    width: 120px;
+    background-color: transparent;
+    border: none;
+    border-bottom: yellow 2px dotted;
+    color: blue;
+}
+
+select.form-control {
+    /*width: 200px;*/
+    color: blue;
+    background-color: transparent;
+    border: none;
+    border-bottom: yellow 2px solid;
+}
+
+select.form-control[disabled] {
+    color: gray;
+    border-bottom: floralwhite 2px solid;
+}
+
+.agGridSelect {
+    color: blue;
+    background-color: lightblue;
+    font-weight: bolder;
+    height: 32px;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 2px yellow solid;
+}
+
+.ag-row-even
+{
+    background-color: lightgoldenrodyellow;
+    color: brown;
+}
+
+.ag-row-odd
+{
+    background-color: mistyrose;
+    color: blue;
+}
+
+.ag-disabled {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: not-allowed;
+    word-wrap:hyphenate;
+}
+
+div.ag-cell.ag-cell-with-height
+{
+    height: 32px;
+    border: lightgray 1px dotted;
+}
+
+.ag-row-selected {
+    background-color: yellow;
+    color: blue;
+}
+
+.imgLoading{
+    height: 100%;
+    width: 100%;
+    vertical-align: central;
+    align-content:stretch;
+}
+
+.imgWriting {
+    height: 100%;
+    width: 100%;
+    vertical-align: central;
+    align-content: stretch;
+}
+
+.md-label
+{
+    overflow-wrap: break-word;
+    max-width: 50px;
+}
+
+md-toast.md-success-toast-theme .md-toast-content {
+    background-color: white;
+    color: green;
+    border: 3px solid darkgreen;
+    border-radius: 25px;
+}
+
+md-toast.md-error-toast-theme .md-toast-content {
+    background-color: white;
+    color: red;
+    border: red solid 3px;
+    border-radius: 25px;
+}
+
+md-toast.md-yesno-toast-theme .md-toast-content {
+    background-color: lightgoldenrodyellow;
+    color: maroon;
+    border: 3px solid brown;
+    max-width: 35vw;
+    text-wrap: normal;
+    border-radius: 25px;
+}
+
+md-toast.md-yesno-toast-theme .md-button {
+    width: 10vw;
+    color: black;
+    border: 2px solid darkgoldenrod;
+    font-weight: bolder;
+}
+
+.infoText {
+    cursor: pointer;
+    user-select: none;
+    font-weight: bolder;
+    color: darkgray;
+}
+
+.tbUC {
+    text-transform: uppercase;
+}
+
+.tbRA {
+    text-align: right;
+}
+
+.tb30 {
+    width: 30px;
+}
+
+.tb40 {
+    width: 40px;
+}
+
+.tb50 {
+    width: 50px;
+}
+
+.tb60 {
+    width: 60px;
+}
+
+.tb70 {
+    width: 70px;
+}
+
+.tb80 {
+    width: 80px;
+}
+
+.tb90 {
+    width: 90px;
+}
+
+.tb100 {
+    width: 100px;
+}
+
+.tb120 {
+    width: 120px;
+}
+
+.tb130{
+    width: 130px;
+}
+
+.tb150 {
+    width: 150px;
+}
+
+.tb170
+{
+    width: 170px;
+}
+
+.tb175 {
+    width: 175px;
+}
+
+.tb190 {
+    width: 190px;
+}
+
+.tb200 {
+    width: 200px;
+}
+
+.tb220 {
+    width: 220px;
+}
+
+.tb230 {
+    width: 230px;
+}
+
+.tb250 {
+    width: 250px;
+}
+
+.tb270 {
+    width:270px;
+}
+
+.tb300 {
+    width: 300px;
+}
+
+.ta300 {
+    width: 300px;
+    border-bottom: yellow 2px solid;
+}
+
+.tb350 {
+    width: 350px;
+}
+
+.tb400 {
+    width: 400px;
+}
+
+.tb450 {
+    width: 450px;
+}
+
+.tb500 {
+    width: 500px;
+}
+
+.redBold {
+    font-size: 11px;
+    color: red;
+    font-weight: bold
+}
+
+.blueBold {
+    font-size: 11px;
+    color: blue;
+    font-weight: bold
+}
+
+.rotate45_red {
+    transform: rotate(-45deg);
+    font-family: Arial;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    vertical-align: middle;
+    color: red;
+}
+
+.rotate45_red_bold {
+    transform: rotate(-45deg);
+    font-family: Arial;
+    font-size: 32pt;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+    color: red;
+}
+
+.rotate45_blue {
+    transform: rotate(-45deg);
+    font-family: Arial;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    vertical-align: middle;
+    color: blue;
+}
+
+.rotate45_blue_bold {
+    transform: rotate(-45deg);
+    font-family: Arial;
+    font-size: 32pt;
+    font-weight: bolder;
+    vertical-align: middle;
+    color: blue;
+    text-align: left;
+}
+

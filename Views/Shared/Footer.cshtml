@@ -1,0 +1,58 @@
+﻿@*@model HRIS.Areas.Common.Models.Footer*@
+
+@*@{
+    var emp = TempData["Footer"] as HRIS.Areas.Common.Models.Footer;
+}*@
+
+<style type="text/css">
+    .lblFooter {
+        font-family: Tahoma;
+        font-size: 9pt;
+        overflow: hidden;
+        color: maroon;
+        text-size-adjust: auto;
+        max-height: 20px;
+        background-color: transparent;
+    }
+
+    .txtFooter {
+        max-height: 20px;
+        font-family: Tahoma;
+        font-weight: bold;
+        font-size: 10pt;
+        overflow: hidden;
+        border: 1px groove blue;
+        text-size-adjust: auto;
+    }
+</style>
+
+<table cellpadding="0" cellspacing="0" style="border: maroon thin solid; border-radius: 4px 4px; width:99vw; max-height:20px; padding:0px; margin:0px; overflow:hidden;">
+    <tr>
+        <td>
+            <label class="lblFooter">Created By</label>
+        </td>
+        <td>
+            <input type="text" ng-model="emp.CreatedBy" class="txtFooter" disabled />
+        </td>
+        <td>
+            <label class="lblFooter">Created On</label>
+        </td>
+        <td>
+            <input type="text" ng-model="emp.CreatedOn" datetime="yyyy-MM-dd HH:mm:ss" class="txtFooter" disabled />
+        @*    @Html.TextBoxFor(model => model.CreatedOn, "{0:dd-MMM-yy HH:mm:ss}", new { disabled = true, @class = "txtFooter" })*@
+        </td>
+        <td>
+            <label class="lblFooter">Updated By</label>
+        </td>
+        <td>
+            <input type="text" ng-model="AuditTrail.UpdatedBy" class="txtFooter" disabled />
+        </td>
+        <td>
+            <label class="lblFooter">Updated On</label>
+        </td>
+        <td>
+            <input type="text" ng-model="AuditTrail.UpdatedOn" datetime="yyyy-MM-dd HH:mm:ss" class="txtFooter" disabled />
+          @*  @Html.TextBoxFor(model => model.UpdatedOn, "{0:dd-MMM-yy HH:mm:ss}", new { disabled = true, @class = "txtFooter" })*@
+        </td>
+    </tr>
+</table>

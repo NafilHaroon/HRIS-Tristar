@@ -1,0 +1,224 @@
+﻿<style type="text/css">
+    .tblLegend{
+        width: 90vw;
+    }
+
+    .tblLegend tr td {
+        border: solid gray 2px;
+        font-size: 9pt;
+    }
+
+    button.btn {
+        width: 5vw;
+    }
+
+    .legendKey {
+        font-weight: bold;
+        color: darkgoldenrod;
+    }
+
+    .modal-title {
+        color: maroon;
+    }
+
+    .modal-dialog {
+        position: absolute;
+        top: 50% !important;
+        transform: translate(0, -50%) !important;
+        -ms-transform: translate(0, -50%) !important;
+        -webkit-transform: translate(0, -50%) !important;
+        margin: auto 5%;
+        width: 90%;
+        height: 90%;
+    }
+
+    .modal-content {
+        min-height: 100%;
+        width: 90vw;
+        position: absolute;
+        left: 10px;
+        right:10px;
+        background-color: lightgoldenrodyellow;
+    }
+
+    .modal-body {
+        position: absolute;
+        top: 45px;
+        overflow: auto;
+    }
+
+    .modal-footer {
+        top: 30px;
+        bottom: 0;
+    }
+</style>
+<div class="modal-header" id="modal-header">
+    <h3 class="modal-title" id="modal-title">List of Data Value Legends</h3>
+</div>
+<div class="app-modal-window" id="modal-body">
+    <table class="tblLegend">
+        <tr>
+            <td>
+                <label class="legendKey">@@CurrentDate</label>
+            </td>
+            <td>
+                <label>Inserts Current Date at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@Salutation</label>
+            </td>
+            <td>
+                <label>Inserts Salutation at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@EmployeeCode</label>
+            </td>
+            <td>
+                <label>Inserts Employee Code at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@EmployeeName</label>
+            </td>
+            <td>
+                <label>Inserts Employee Name (without head name) at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@FatherName</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Father Name at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@BranchName</label>
+            </td>
+            <td>
+                <label>Inserts Employee's current Branch Name at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@DepartmentName</label>
+            </td>
+            <td>
+                <label>Inserts Employee's current Department Name at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@Designation</label>
+            </td>
+            <td>
+                <label>Inserts Employee's current Designation at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@GradeName</label>
+            </td>
+            <td>
+                <label>Inserts Employee's current Grade Description at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@SupervisorName</label>
+            </td>
+            <td>
+                <label>Inserts Employee's current Supervisor Name at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@JobNature</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Job Nature narration at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@CNIC</label>
+            </td>
+            <td>
+                <label>Inserts Employee's CNIC at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@JoiningDate</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Joining Date at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@SeparationDate</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Separation Date at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@BirthDate</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Birth Date at idenfier location while generating Letter</label>
+            </td>
+            <td/>
+            <td/>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@PresentAddress</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Present Address at idenfier location while generating Letter</label>
+            </td>
+            <td>
+                <label class="legendKey">@@PermanentAddress</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Permanent Address at idenfier location while generating Letter</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@@Letter_No</label>
+            </td>
+            <td>
+                <label>Inserts system generated Unique Letter Reference # when Letter is finally approved</label>
+            </td>
+            <td>
+                <label class="legendKey">@@@Gross_Salary</label>
+            </td>
+            <td>
+                <label>Inserts Employee's Gross Salary at idenfier location when Letter is finally approved</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@@Salary_Breakup</label>
+            </td>
+            <td>
+                <label>Inserts complete Salary breakup in tabular form at idenfier location when Letter is finally approved</label>
+            </td>
+            <td>
+                <label class="legendKey">@@@Approver_Name</label>
+            </td>
+            <td>
+                <label>Inserts Final Approver Name at idenfier location when Letter is finally approved</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="legendKey">@@@Approver_Designation</label>
+            </td>
+            <td>
+                <label>Inserts Final Approver Designation at idenfier location when Letter is finally approved</label>
+            </td>
+            <td/>
+            <td/>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    Please ensure that you keep complete Identifier in single format i.e. @@CurrentDate, anything like @<b>@CurrentDate</b> etc will not evaluate value <button class="btn btn-primary" type="button" ng-click="modalInstance.close('cancel');">Ok</button>
+</div>

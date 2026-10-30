@@ -1,0 +1,63 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="PostSalaryController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Post Salary</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="height:20vh;"></tr>
+
+                    <tr>
+                        <td colspan="10" style="text-align: center;">
+                            <label style="color: blue; font-size: 25px;">Post Salary for the Financial Period @Session["PeriodName"]</label>
+                        </td>
+                    </tr>
+
+                    <tr />
+                    <tr />
+
+                    <tr>
+                        <td colspan="10" style="text-align: center;">
+                            <button type="button" id="btnPost" ng-click="tbPost()" title="Click to Post Salary for the Current Period" class="postSalary" />
+                            <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exitLarge" />
+                        </td>
+                    </tr>
+                    <tr style="height: 7vh;"></tr>
+                    <tr>
+                        <td colspan="10" rowspan="3">
+                            <div style="color: maroon; font-weight: bold; background: transparent; overflow: hidden; text-align:center;">
+                                Note: Post Salary Process posts Salaries for all Financial Companies together however you can only perform verify and close option of each Financial Company within respective login
+                            </div>
+                        </td>
+                    </tr>
+                    <tr />
+                    <tr />
+                    <tr>
+                        <td colspan="4" rowspan="3">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Process/JS/PostSalary.js' type="text/javascript"></script>
+</div>
+
+<style type="text/css">
+    button {
+        float: none !important;
+        display: inline;
+    }
+</style>

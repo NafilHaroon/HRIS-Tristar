@@ -1,0 +1,142 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="LetterController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Employee Letter</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button type="button" id="btnCancel" ng-click="tbCancel(Letter.LetterNo)" ng-show="Letter.LetterNo !=null && Letter.Cancel==false" title="Click to Mark this Employee Letter Closed" class="cancel" />
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Employee Letters from lookup list" />
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnAdd" ng-click="tbAdd()" title="Click to create new Employee Letter" class="add" />
+                                <button type="button" id="btnEdit" title="Click to edit this Employee Letter" class="edit" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" ng-show="!ReviewMode" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="primaryKey">Letter #</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtLetterNo" ng-model="Letter.LetterNo" ng-keyup="$event.keyCode == 13  ? getLetterByNo(Letter.LetterNo, null) : null" maxlength="13" class="form-control tb200 tbuc" />
+                            <input type="hidden" value="@ViewBag.LetterId" id="vbLetterId"/>
+                            <hidden ng-model="Letter.LetterId"></hidden>
+                            <hidden ng-model="Letter.ShowAllEmployee"></hidden>
+                            <input id="hdnCompleted" ng-model="Letter.Completed" type="text" ng-show="false" />
+                            <input id="hdnOwner" ng-model="Letter.Owner" type="text" ng-show="false" />
+                        </td>
+                        <td>
+                            <label>Status</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Letter.StateName" readonly tabindex="-1" id="txtStatus" />
+                        </td>
+                        <td colspan="3" />
+                        <td colspan="3" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Template</label>
+                        </td>
+                        <td>
+                            <label ng-if="ReviewMode" class="primaryKey" ng-bind="Letter.TemplateName"></label>
+                            <select ng-show="!ReviewMode" ng-options="lt.TemplateId as lt.TemplateName for lt in lstLetterTemplate"
+                                    ng-model="Letter.TemplateId" class="form-control tb300" id="ddTemplate" ng-change="templateChanged(Letter.TemplateId)" ng-disabled="Letter.Loaded || !Letter">
+                                <option disabled value="">-Select Template-</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">Employee</label>
+                        </td>
+                        <td>
+                            <label ng-if="ReviewMode" class="primaryKey" ng-bind="Letter.Employee.EmployeeName"></label>
+                            <input ng-show="!ReviewMode" type="text" ng-if="!Letter.IncludeSepEmp" ng-model="Letter.Employee" typeahead-editable="false"
+                                   uib-typeahead="e as e.EmployeeName for e in lstEmployee | filter:$viewValue | limitTo:10"
+                                   class="form-control ta300 taUC" typeahead-show-hint="true" typeahead-min-length="2"
+                                   typeahead-select-on-exact="true" typeahead-select-on-blur="true" id="ddEmployee"
+                                   placeholder="-Select Employee-" title="Type minimum 2 characters to see the matching list"
+                                   ng-disabled="Letter.Loaded || !Letter" />
+
+                            <input ng-show="!ReviewMode" type="text" ng-if="Letter.IncludeSepEmp" ng-model="Letter.Employee" typeahead-editable="false"
+                                   uib-typeahead="e2 as e2.EmployeeName for e2 in lstAllEmployee | filter:$viewValue | limitTo:10"
+                                   class="form-control ta300 taUC" typeahead-show-hint="true" typeahead-min-length="2"
+                                   typeahead-select-on-exact="true" typeahead-select-on-blur="true" id="ddAllEmployee"
+                                   placeholder="-Select Employee-" title="Type minimum 2 characters to see the matching list"
+                                   ng-disabled="Letter.Loaded || !Letter" />
+                        </td>
+                        <td>
+                            @*&& Letter.LetterNo==null &&*@
+                            <button type="button" id="btnLoad" ng-show="!Letter.Loaded && !ReviewMode" ng-click="tbLoad()" title="Click to load the letter content using Selected Employee & Template" class="load" />
+                            <button type="button" id="btnClear" ng-show="Letter.Loaded && Letter.LetterNo==null && !ReviewMode" ng-click="tbClear()" title="Click to clear the letter content and enable Employee & Template selection" class="clear" />
+                        </td>
+                        <td/>
+                        <td colspan="2">
+                            <md-switch ng-disabled="true" ng-show="Letter.ImpactsPayroll" ng-model="Letter.NoSalaryChange">{{Letter.NoSalaryChange ? "No" : ""}} Change In Salary</md-switch>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <textarea ui-tinymce="tinymceOptions" ng-model="Letter.LetterContent" rows="10" cols="50"
+                                      id="txtLetterContent"></textarea>
+                        </td>
+                        <td colspan="3">
+                            <div class="divSalaryGrid" ng-show="Letter.ImpactsPayroll && !Letter.NoSalaryChange">
+                                <div class="divToolbar">
+                                    <button ng-show="!ReviewMode" ng-click="onAddSalary()" class="add" title="Add Salary Head"></button>
+                                    <button ng-show="!ReviewMode" ng-click="onDeleteSalary()" class="delete" title="Remove Salary Head"></button>
+                                </div>
+                                <div ag-grid="grdOptSalary" id="grdSalary" class="ag-theme-fresh" style="height:100%; width:auto; max-width:29vw;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                        </tr>
+                </table>
+            </div>
+            <footer>
+                <div id="FooterButtons" class="float-right">
+                    <button ng-show="Letter.LetterId != null && Letter.Owner == '@Session["UserId"]' && !Letter.Completed && Letter.Owner == Letter.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(Letter.LetterId, 2)" class="submit"
+                            title="Click to submit this Employee Letter for approval" id="btnSubmit"></button>
+                    <button ng-if="Letter.Owner == '@Session["UserId"]' && !Letter.Completed && Letter.Owner != Letter.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(Letter.LetterId, 3)" class="approve" title="Click to Approve this Employee Letter" id="btnApprove"></button>
+                    <button ng-if="Letter.Owner == '@Session["UserId"]' && !Letter.Completed && Letter.Owner != Letter.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(Letter.LetterId, 5)" class="return"
+                            title="Click to return this Employee Letter to Sender" id="btnReturn"></button>
+                    <button ng-if="Letter.Owner == '@Session["UserId"]' && !Letter.Completed && Letter.Owner != Letter.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(Letter.LetterId, 4)" class="reject"
+                            title="Click to reject this Employee Letter. This Request will no longer be actionable once you reject it!" id="btnReject"></button>
+                    <button ng-show="Letter.LetterId != null && Letter.Owner == '@Session["UserId"]' && !Letter.Completed && @Session["UserRoleId"] == 2"
+                            ng-click="tbSubmission(Letter.LetterId, 99)" class="ceo"
+                            title="Click to submit this Employee Letter for approval from CEO" id="btnSubmitCEO"></button>
+                    <button ng-click="tbHistory()" class="history" title="Click to view selected Payment Request History" id="btnHistory"></button>
+                </div>
+                <ng-include src="'/HRIS/Helper/Pages/Footer.html'" />
+            </footer>
+        </fieldset>
+    </div>
+    <script src='~/Scripts/tinymce/tinymce.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/angular-ui-tinymce/src/tinymce.js' type="text/javascript"></script>
+    <script src='~/Areas/Transaction/JS/EmployeeLetter.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/History.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/FormSubmission.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <link href='~/Content/CSS/TypeAhead.css' rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Transaction/CSS/EmployeeLetter.css" rel="stylesheet" type="text/css" />
+</div>

@@ -1,0 +1,79 @@
+INCOME TAX DEDUCTION - CALCULATION EXPLANATION
+================================================================
+
+Employee: Zawin Mustafa (TSTS923619)
+Period: September 2026 (202609)
+Tax Year: 2027 (Jul 2026 - Jun 2027)
+
+----------------------------------------------------------------
+WHY THE MONTHLY DEDUCTION IS SHOWING AS RS. 152,996
+----------------------------------------------------------------
+
+Your income tax credit is currently recorded under the category:
+
+    "Tax credit for contribution to approved pension fund u/s 63"
+
+This credit type has the following limits (as configured in the
+system, per Income Tax Ordinance rules for this category):
+
+    Maximum Amount allowed : Rs. 2,000,000
+    Maximum Rate allowed   : 20% of annual taxable income
+
+This is NOT a direct rupee-for-rupee reduction in tax. Under this
+credit category, the benefit is calculated proportionally, using
+the following formula:
+
+    Tax Credit Benefit = (Total Tax / Taxable Income) x
+                          Lower of (Amount Claimed,
+                                    20% of Taxable Income,
+                                    Rs. 2,000,000)
+
+----------------------------------------------------------------
+YOUR ACTUAL NUMBERS
+----------------------------------------------------------------
+
+  Annual Taxable Income ........................... Rs. 8,259,480
+  Annual Tax Liability (Total Tax) ................ Rs. 1,864,818
+  Pension Fund contribution claimed (approved) ..... Rs.   270,691
+  20% of Taxable Income (cap check) ................ Rs. 1,651,896
+  Maximum Amount cap ................................ Rs. 2,000,000
+
+  Since Rs. 270,691 is lower than both caps, the full claimed
+  amount is used in the formula:
+
+  Effective Tax Rate = 1,864,818 / 8,259,480 = ~22.58%
+
+  Tax Credit Benefit = 22.58% x 270,691 = Rs. 61,116
+
+----------------------------------------------------------------
+RESULT
+----------------------------------------------------------------
+
+  Total Tax .......................................... 1,864,818
+  Less: Tax already deducted (Jul + Aug 2026) ......... 273,742
+  Less: Tax Credit benefit (as calculated above) ........ 61,116
+  ---------------------------------------------------------------
+  Remaining tax to be collected ..................... 1,529,960
+  Remaining months (Sept 2026 - Jun 2027) ..................  10
+  ---------------------------------------------------------------
+  Monthly Deduction .................................. 152,996
+
+----------------------------------------------------------------
+IN SUMMARY
+----------------------------------------------------------------
+
+Because a pension fund contribution is only credited against tax
+proportionally (at your effective tax rate of ~22.58%), a
+contribution of Rs. 270,691 reduces your actual tax by only
+Rs. 61,116 - not by the full contributed amount. This is why the
+resulting monthly deduction is Rs. 152,996.
+
+If a lower monthly deduction is expected, this can only be
+achieved either by:
+  (a) increasing the recorded/claimed pension contribution amount
+      (subject to the caps above), or
+  (b) reviewing whether this credit should instead be classified
+      differently, in consultation with Finance/Tax.
+
+This is being shared for transparency on how the system arrives
+at the current figure.

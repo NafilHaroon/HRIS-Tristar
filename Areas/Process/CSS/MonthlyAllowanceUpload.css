@@ -1,0 +1,18 @@
+﻿.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 50px;
+}
+
+/*.divMAUploadScreen {
+    width: 70vw;
+    height: 65vh;
+    float: left;
+}*/
+
+.divMAUploadGrid {
+    height: 65vh;
+    width: 85vw;
+}

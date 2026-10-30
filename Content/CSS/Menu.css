@@ -1,0 +1,123 @@
+﻿/*Main headers of the menu*/
+nav {
+    /*background: repeating-radial-gradient(circle, #a85e36, #e2e2e2);*/ /*#efd49c;*/ /*#ffcc33;*/
+     background: radial-gradient(ellipse farthest-corner at 47px 47px, #f7dfac, #b7860c);
+    float: left;
+    width: 99.75vw;
+    height: 3.5vh;
+    margin: 0;
+    font-weight: bold;
+}
+
+/*Menu dropdown body*/
+nav ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /*display: inline;*/
+    height: 3.5vh;
+    text-align: left;
+    border: none;
+}
+
+/*main menu item hover*/
+a:hover { 
+    /*background: #CC3333;*/
+     background: #3349cc;
+    color: #ffffff;
+    height: 22px;
+    margin: 0;
+    vertical-align: middle;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/*list items/anchors on menu dropdown*/
+nav ul li {
+    float: left;
+    list-style: none;
+    position: relative;
+    line-height: inherit;
+}
+
+/*style of anchor text on menu*/
+nav ul li a {
+    float: left;
+    list-style: none;
+    display: block;
+    padding-left: 1em;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+
+/*anchor hover*/
+nav ul li:hover > a, ul li:hover ul li a:hover, ul li:hover ul li:hover { 
+    /*background: #CC3333;*/
+    background: #3349cc;
+    color: #ffffff;
+    font-weight: bolder;
+    text-align: center;
+    border:none;
+    border-top-left-radius: 1em 1em; 
+    border-bottom-right-radius: 1em 1em; 
+}
+
+nav ul li ul {
+    display: none;
+}
+
+/*2nd level menu / 1st tier drop down list item body*/
+nav ul li:hover > ul { /*drop down first list item body*/
+    width: 187px;
+    display: block;
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 23px;
+    background: none;
+}
+
+/*3rd level menu / 2nd tier drop down list item body*/
+nav ul li:hover > ul li:hover > ul { 
+    display: block;
+    float: left;
+    position: absolute;
+    left: 235px;/*200px*/
+    top: 0;
+    background: none;
+}
+
+/*drop down list body anchor style*/
+nav ul li:hover > ul li a 
+{
+    top: 23px; 
+    float: left;
+    margin: 0;
+    width: 230px;
+    background: #efd49c;
+    color: #CC3333;
+    list-style: none;
+    display: block;
+    height: 23px;
+    border:none;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.menuSeparator
+{
+    height:2px; 
+    margin:0; 
+    width:235px;
+    left: 2px;
+}
+
+.menuSeparatorLine
+{
+    color:maroon; 
+    height:2px; 
+    margin:0;
+}

@@ -1,0 +1,124 @@
+﻿<html>
+<head>
+    <style type="text/css">
+        .modal-dialog {
+            position: absolute;
+            top: 50% !important;
+            left: 15%;
+            transform: translate(0, -50%) !important;
+            -ms-transform: translate(0, -50%) !important;
+            -webkit-transform: translate(0, -50%) !important;
+            margin: auto 5%;
+            width: 30vw;
+            height: 52vh;
+        }
+
+        .modal-header
+        {
+            background-color: lightgoldenrodyellow;
+        }
+
+        .modal-title
+        {
+            color: brown;
+            font-size: large;
+            font-weight:bold;
+            vertical-align: middle;
+        }
+
+        .modal-content {
+            min-height: 100%;
+            width: 45vw;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .modal-body {
+            position: absolute;
+            top: 45px;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            overflow: auto;
+            width:auto;
+            background: radial-gradient(ellipse farthest-corner at 50vw 50vh, #e9daac, #e2e2e2);
+        }
+
+        .modal-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .tblSubmission {
+            width: 29vw;
+        }
+
+        .tblSubmission tr td:nth-child(odd) {
+            width: 8vw;
+        }
+
+        .tblSubmission tr td:nth-child(even) {
+            width: 10vw;
+        }
+
+        .lstRcpt {
+            width: 15vw;
+            border: 1px dotted #808080;
+        }
+
+        .lbTitle {
+            font-family: Tahoma;
+            font-size: 12pt;
+        }
+    </style>
+</head>
+<body ng-app="HRIS">
+    <div ng-controller="FormSubmissionController">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">{{formTitle}}</h3>
+        </div>
+        <div class="modal-body">            
+            <table class="tblSubmission">
+                <tr>
+                    <td colspan="2">
+                        <label class="lbTitle">Submit To</label>
+                    </td>
+                    <td colspan="3">
+                        <label class="lbTitle">Next State</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> 
+                        <select ng-model="RecipientModel.SelectedRecipient" ng-options="rlist.Value as rlist.Text for rlist in RecipientModel.RecipientList" class="lstRcpt" id="lstRecipient" ></select>                        
+                    </td>
+                    <td colspan="2">
+                        <input type="text" style=" border: 0; outline: none; color: blue; background: transparent; " ng-model="RecipientModel.DocumentStatus" class=" form-control tb200" disabled />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <label class="lbTitle">Submission Comments</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <textarea rows="4" cols="40" maxlength="500" ng-model="RecipientModel.SubmissionComment" class="form-control tb500" style="resize:none;"></textarea>
+                    </td>
+                    <td>
+                        <div class="float-left">
+                            <button type="button" id="btnSubmit" ng-click="tbSubmit()" title="Click to go ahead with submission to selected recipient" class="go" />
+                            <button type="button" id="btnCancel" ng-click="tbCancel()"
+                                    title="Click to cancel the submission process and go back to previous window" class="back" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿@{
+    List<HRIS.Areas.Common.Models.Menu> menuList = ViewBag.Menu;
+}
+
+@using HRIS.Areas.Common.Models;
+
+<link href='~/Content/CSS/Menu.css' rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    function showNoEvent() {
+        alert('There is no action assosicated with this option, please select option from dropdown menu instead\n\nآپ کے منتخب کردہ آپشن سے کوئ فعل منسلک نہیں۔ براۓ مہربانی فہرست میں موجود آپشن کا چناؤ کریں۔');
+    }
+</script>
+
+<nav>
+    <ul>
+        @foreach (Menu mp in menuList.Where(p => p.ParentId == null))
+        {
+            <li>
+                @if (!string.IsNullOrEmpty(mp.Action))
+                {
+                    @Html.ActionLink(@mp.Name, @mp.Action, @mp.Controller,
+                    new { screenName = @mp.Name,
+                        workflowtypeid = mp.WorkFlowTypeId
+                    },
+                    new { style = "height:23px;" })
+                }
+                else
+                {
+                    @Html.ActionLink(@mp.Name, null,
+                    new { },
+                    new
+                    {
+                        onclick = "showNoEvent();",
+                        style = "height:23px;"
+                    })
+                }
+
+                @if (menuList.Count(p => p.ParentId == mp.Id) > 0)
+                {
+                    <ul>
+                        @RenderMenuItem(menuList, mp.Id)
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</nav>
+
+@helper RenderMenuItem(List<HRIS.Areas.Common.Models.Menu> _fullList, short _parentId)
+{
+    string optSubGroup = null;
+    foreach (Menu child in _fullList.Where(p=>p.ParentId == _parentId))
+    {
+        if (optSubGroup != null && optSubGroup != @child.OptionSubGroup)
+        {
+            <li class="menuSeparator"><hr class="menuSeparatorLine" /></li>
+        }
+        optSubGroup = child.OptionSubGroup;
+
+            <li style="height:23px; ">
+                @{var childCount = _fullList.Count(p => p.ParentId == child.Id);}
+                @Html.ActionLink(@child.Name + (childCount > 0 ? " ▸" : ""), @child.Action, @child.Controller,
+                    new { screenName = @child.Name, workflowtypeid = child.WorkFlowTypeId }, null)
+                @if (childCount > 0)
+                {
+                    <ul>
+                        @RenderMenuItem(_fullList, child.Id)
+                    </ul>
+                }
+            </li>
+    }
+}
+

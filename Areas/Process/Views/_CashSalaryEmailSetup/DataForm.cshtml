@@ -1,0 +1,61 @@
+﻿<html>
+<head title="Email Setup">
+    <title>Email Setup</title>
+</head>
+
+<body ng-app="HRIS">
+    <div ng-controller="EmailSetupController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            @if (Convert.ToInt16(Session["WorkFlowTypeId"]) == 1)
+                            {
+                                <p class="form-title">Cash Salary Email Setup</p>
+                            }
+                            else
+                            {
+                                <p class="form-title">Probation Reminder Email Setup</p>
+                            }
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="8">
+                            <div class="divEmailSetupScreen">
+                                <div class="divEmailSetupGrid">
+                                    <div class="divToolbar">
+                                        <button ng-click="onAddEmailSetup()" class="add" title="Add Email"></button>
+                                        <button ng-click="onDeleteEmailSetup()" class="delete" title="RemoveEmail"></button>
+                                    </div>
+                                    <div ag-grid="grdOptEmailSetup" id="grdEmailSetup" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" rowspan="3" valign="top">
+                            <div class="validation-summary-errors" data-ng-repeat="error in errors">
+                                <span>Validation</span>
+                                {{error}}<p />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Process/JS/EmailSetup.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="~/Areas/Process/CSS/EmailSetup.css" />
+</body>
+</html>
+

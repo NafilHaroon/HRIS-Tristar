@@ -1,0 +1,82 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="ConfigController" id="ngForm"  ng-init="formLoaded()">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Config</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Loan</label>
+                        </td>
+                        <td>
+                            <select ng-options="b.HeadId as b.HeadName for b in lstLoan"
+                                    ng-model="Config.LoanDeductionId" class="form-control tb200" id="ddLoan">
+                                <option disabled value="">-Select Loan Salary Head-</option>
+                            </select>
+                        </td>
+                        <td colspan="2" />
+                        <td colspan="3" />
+                        <td colspan="2" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Advance</label>
+                        </td>
+                        <td>
+                            <select ng-options="d.HeadId as d.HeadName for d in lstLoan"
+                                    ng-model="Config.AdvanceDeductionId" class="form-control tb200" id="ddAdvance">
+                                <option disabled value="">-Select Advance Salary Head -</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Absent</label>
+                        </td>
+                        <td>
+                            <select ng-options="d.HeadId as d.HeadName for d in lstAbsent"
+                                    ng-model="Config.AbsentDeductionId" class="form-control tb200" id="ddAbsent">
+                                <option disabled value="">-Select Absent Salary Head-</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Email</label>
+                        </td>
+                        <td colspan="4">
+                            <textarea id="txtEmail" rows="5" cols="50" maxlength="1000" class="form-control tb500" ng-model="Config.EmailText"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Master/JS/Config.js' type="text/javascript"></script>
+</div>
+

@@ -1,0 +1,88 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="BulkSupervisorController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Bulk Supervisor Update</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">                               
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Branch</label>
+                        </td>
+                        <td>
+                            <select ng-options="b.BranchCode as b.BranchName for b in lstBranch"
+                                    ng-model="ChangeSupervisor.BranchCode" class="form-control tb200" id="ddBranch">
+                                <option value="">-All Branches-</option>
+                            </select>
+                        </td>
+                        <td colspan="2" />
+                        <td colspan="3" />
+                        <td colspan="2" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Department</label>
+                        </td>
+                        <td>
+                            <select ng-options="d.DepartmentCode as d.DepartmentName for d in lstDepartment"
+                                    ng-model="ChangeSupervisor.DepartmentCode" class="form-control tb200" id="ddDepartment">
+                                <option value="">-All Department-</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Current Supervisor</label>
+                        </td>
+                        <td>
+                            <select ng-options="cs.EmployeeId as cs.EmployeeName for cs in lstSupervisor"
+                                    ng-model="ChangeSupervisor.SupervisorId" class="form-control tb300" id="ddCSupervisor">
+                                <option disabled value="">-Select Current Supervisor -</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">New Supervisor</label>
+                        </td>
+                        <td>
+                            <select ng-options="ns.EmployeeId as ns.EmployeeName for ns in lstEmployee"
+                                    ng-model="ChangeSupervisor.NewSupervisorId" class="form-control tb300" id="ddNSupervisor">
+                                <option disabled value="">-Select New Supervisor-</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <button type="button" id="btnSave" ng-click="tbSave()" title="Click to perform bulk update of Employees in Current company" class="changeManager" />
+                            <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exitLarge" />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="4" rowspan="6">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Process/JS/BulkSupervisor.js' type="text/javascript"></script>
+</div>
+

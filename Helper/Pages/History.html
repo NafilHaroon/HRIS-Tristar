@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <style type="text/css">
+        .modal-dialog {
+            position: absolute;
+            top: 50% !important;
+            transform: translate(0, -50%) !important;
+            -ms-transform: translate(0, -50%) !important;
+            -webkit-transform: translate(0, -50%) !important;
+            margin: auto 5%;
+            width: 90%;
+            height: 90%;
+        }
+
+        .modal-header {
+            background-color: blue;
+        }
+
+        .modal-title {
+            color: white;
+            font-size: large;
+            font-weight:bold;
+            vertical-align: middle;
+        }
+
+        .modal-content {
+            min-height: 100%;
+            width: 90vw;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .modal-body {
+            position: absolute;
+            top: 45px;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            overflow: auto;
+            background: radial-gradient(ellipse farthest-corner at 50vw 50vh, #e9daac, #e2e2e2);
+        }
+
+        .modal-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body ng-app="HRIS">
+    <div ng-controller="HistoryController">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">{{formTitle}}</h3>
+        </div>
+        <div class="modal-body">
+              <div ag-grid="gridOptions" class="ag-theme-fresh" style="height: 100%; width:auto; max-width:100%;"></div>          
+        </div>
+    </div>
+</body>
+</html>

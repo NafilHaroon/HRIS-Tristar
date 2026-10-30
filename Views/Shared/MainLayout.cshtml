@@ -1,0 +1,57 @@
+﻿@*<link href='~/Content/Css/MainSite.css' rel="stylesheet" type="text/css" />
+    <script src='~/Scripts/Agility/MainLayout.js' type="text/javascript"></script>*@
+
+<!DOCTYPE html>
+@*<html>*@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Content/Icon/agility_pri_fc_proc.ico" type="image/ico" />
+    <title>Agility IDS ver 1.5.0</title>
+    <link href="~/Content/CSS/MainSite.css" rel="stylesheet" type="text/css" />
+    <script src='~/Scripts/Agility/MainLayout.js' type="text/javascript"></script>
+</head>
+<div ng-app="HRIS" ng-controller="MainLayout" ng-init="formLoaded()">
+    <fieldset>
+        <div id="divMain" class="float-left">
+            <table class="tblMainLayout">
+                <tr class="form-title-bg">
+                    <td width="33%" align="left">
+                        <p class="site-title">Agility Pakistan HRIS</p>
+                        <p class="site-subtitle">Change the way you engage with your talent</p>
+                    </td>
+                    <td width="33%" align="center" style="vertical-align:middle;">
+                        @Html.Partial("UserCredentialPartial")
+                    </td>
+                    <td width="33%" align="right">
+                        <p>
+                            <img id="imgCompanyLogo" height="50" width="200" ng-click="toggleCompany()" style="display:block; top:10px;" title="Click me to change your default company!" />
+                            <div id="divCompanySelection" style="display:none;">
+                                <select ng-options="c.CompanyId as c.CompanyName for c in lstCompany"
+                                        ng-model="UserCompanyId" class="form-control tb200" id="ddCompany">
+                                    <option disabled value="">-Select Company-</option>
+                                </select>
+                                <button class="ok" title="Click to set this company as your default company!" ng-click="saveSelection()"></button>
+                                <button class="cancel" title="Click to continue with your previously selected default company!" ng-click="discardSelection()"></button>
+                            </div>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        @Html.Partial("MainMenuPartial")
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+    @*<div id="body">
+        @RenderBody()
+    </div>*@
+</div>
+<footer>
+    <span class="developer">
+        Developed and Maintained by Agility Pakistan IT Department
+    </span>
+</footer>
+@*</html>*@

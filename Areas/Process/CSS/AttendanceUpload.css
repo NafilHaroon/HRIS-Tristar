@@ -1,0 +1,13 @@
+﻿.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 50px;
+    /*height: auto;*/
+}
+
+.divAttUploadGrid {
+    height: 70vh;
+    width: 55vw;
+}

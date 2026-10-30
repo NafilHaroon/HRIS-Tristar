@@ -1,0 +1,155 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="CompanyController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Company</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Company from lookup list" />
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnAdd" ng-click="tbAdd()" title="Click to create new Company" class="add" />
+                                <button type="button" id="btnEdit" title="Click to edit this Company" class="edit" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="primaryKey">Company Id</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtCompanyId" ng-model="Company.CompanyId"  numbers-only  ng-keyup="$event.keyCode == 13  ? getCompanyById(Company.CompanyId) : null" maxlength="3" class="form-control tb60 tbRA" />
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <input type="checkbox" ng-model="Company.IsActive" class="form-check-input" id="chkActive" disabled />
+                                <label class="form-check-label" for="chkActive">Is Active?</label>
+                            </div>
+                        </td>
+                        <td colspan="2" />
+                        <td colspan="3" />
+                        <td colspan="2" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Company Name</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtCompanyName" ng-model="Company.CompanyName" maxlength="50" class="form-control tb250" />
+                        </td>
+
+                        <td>
+                            <label class="mandatoryKey">Company Code</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Company.CompanyCode" maxlength="2" class="form-control tb50" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Address</label>
+                        </td>
+                        <td rowspan="4">
+                            <textarea id="txtAddress" rows="4" cols="50" maxlength="200" class="form-control tb250" ng-model="Company.CompanyAddress"></textarea>
+                        </td>
+                        <td rowspan="4" colspan="2">
+                            <img data-ng-src="data:image/png;base64,{{Company.CompanyLogo}}" height="100" width="200" style="display: inline-block;" alt="Select Company Logo" id="imgLogo" />
+                            <input type="file" accept="image/*" id="btnLogo" onchange="angular.element(this).scope().imageUpload(event);" style="display:none;" />
+                        </td>
+                    </tr>
+                    <tr/>
+                    <tr/>
+                    <tr/>
+            
+                    <tr>
+                        <td>
+                            <label>PF Title</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Company.PFTitle" maxlength="75" class="form-control tb250" />
+                        </td>
+                        <td>
+                            <label>PF Receivable</label>
+                        </td>
+                        <td>
+                            <select ng-options="pf.AccountId as pf.AccountName for pf in lstPFAccount"
+                                    ng-model="Company.PFReceivableId" class="form-control tb300" id="ddPFReceivable">
+                                <option disabled value="">-Select PF Receivable-</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>PF Bank A/c</label>
+                        </td>
+                        <td colspan="2">
+                            <select ng-options="ba.AccountId as ba.AccountName for ba in lstBankAccount"
+                                    ng-model="Company.PFBankAccountId" class="form-control tb300" id="ddBankAccount"
+                                    title="PF Bank Account to be auto credited for Voucher Creation upon approval of PF Withdrawal in Transfora">
+                                <option disabled value="">-Select Bank Account-</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">NTN</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Company.NTN" maxlength="15" class="form-control tb200" />
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">HFM Code</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Company.HFMCode" maxlength="3" class="form-control tb60" />
+                        </td>
+                        <td>
+                            <md-switch ng-disabled="true" ng-model="Company.FinancialExtract" title="Turn on to get the financial uplift recorded by system during post salary process">Extract Financials</md-switch>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">EOBI Reg #</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Company.EOBIRegNo" maxlength="15" class="form-control tb200" />
+
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">EOBI Contribution</label>
+                        </td>
+                        <td>
+                            <input type="number" ng-model="Company.EOBIContribution" oninput="return check(event,value)" onkeypress="return isDecimalKey(event)" min="1" maxlength="4" class="form-control tb100 tbRA" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" rowspan="3">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <footer>
+                <ng-include src="'/HRIS/Helper/Pages/Footer.html'" />
+            </footer>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Master/JS/Company.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+</div>

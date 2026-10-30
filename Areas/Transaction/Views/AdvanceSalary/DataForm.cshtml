@@ -1,0 +1,104 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="AdvanceSalaryController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Advance Salary</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Advance Salary from lookup list" />
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnAdd" ng-click="tbAdd()" title="Click to create new Advance Salary" class="add" />
+                                <button type="button" id="btnEdit" title="Click to edit this Advance Salary" class="edit" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="primaryKey">Reference #</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtAdvanceId" ng-model="AdvanceSalary.AdvanceId" numbers-only ng-keyup="$event.keyCode == 13  ? getAdvanceSalaryById(AdvanceSalary.AdvanceId) : null" maxlength="5" class="form-control tb100 tbRA" />
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">Advance Date</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="AdvanceSalary.AdvanceDate" id="dpAdvance" maxlength="11" class="form-control dateField" />
+                        </td>
+                        <td>
+                            <label>Status</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="AdvanceSalary.StatusName" readonly tabindex="-1" id="txtStatus" />
+                        </td>
+                        <td colspan="2" />
+                        <td colspan="2" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Employee</label>
+                        </td>
+                        <td colspan="3">
+                            <input type="text" ng-model="AdvanceSalary.Employee" typeahead-editable="false"
+                                   uib-typeahead="e as e.EmployeeName for e in lstEmployee | filter:$viewValue | limitTo:10"
+                                   class="form-control ta300 tbUC" typeahead-show-hint="true" typeahead-min-length="2"
+                                   typeahead-select-on-exact="true" typeahead-select-on-blur="true" id="ddEmployee"
+                                   placeholder="-Select Employee-" title="Type minimum 2 characters to see the matching list">
+                            @*<select ng-options="e.EmployeeId as e.EmployeeName for e in lstEmployee"
+                                        ng-model="AdvanceSalary.EmployeeId" class="form-control tb400" id="ddEmployee">
+                                    <option disabled value="">-Select Employee-</option>
+                                </select>*@
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Description</label>
+                        </td>
+                        <td colspan="4">
+                            <textarea id="txtDescription" rows="5" cols="50" maxlength="150" class="form-control tb400" ng-model="AdvanceSalary.Description"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Amount</label>
+                        </td>
+                        <td>
+                            <input type="number" ng-model="AdvanceSalary.Amount" maxlength="10" value="0" class="form-control tb100 tbRA" />
+                        </td>
+                        <td>
+                            <input type="checkbox" ng-model="AdvanceSalary.Deducted" id="chkDeducted" style="visibility:collapse;" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" rowspan="6">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <footer>
+                <ng-include src="'/HRIS/Helper/Pages/Footer.html'" />
+            </footer>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Transaction/JS/AdvanceSalary.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/DateHelper.js' type="text/javascript"></script>
+    <link href='~/Scripts/jQuery/jquery.ui.datepicker.css' rel="stylesheet" type="text/css" />
+    <link href='~/Content/CSS/TypeAhead.css' rel="stylesheet" type="text/css" />
+</div>

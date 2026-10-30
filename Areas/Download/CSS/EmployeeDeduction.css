@@ -1,0 +1,14 @@
+﻿.divEmployeeDeductionGrid {
+    height: 92vh;
+    width: 99vw;
+}
+
+.ag-header-group-cell-with-group {
+    background-color: lightgoldenrodyellow;
+    color: blue;
+    font-weight: bolder;
+}
+
+.ag-header-group-cell-label {
+    text-align: center;
+}

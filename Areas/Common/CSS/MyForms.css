@@ -1,0 +1,11 @@
+﻿.divFormList {
+    height: 92vh;
+    width: 99.5vw;
+    float: left;
+}
+
+md-radio-button .md-label {
+    color: blue;
+    font-weight: bold;
+    display: inline;
+}

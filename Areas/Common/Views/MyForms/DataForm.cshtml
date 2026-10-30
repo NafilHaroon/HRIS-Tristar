@@ -1,0 +1,22 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="MyFormsController" ng-init="formLoaded()" id="ngForm">
+        <div>
+            <md-radio-group layout="row" id="rdgFormType" ng-model="MyForms.ViewType" ng-change="getMyForms(MyForms.ViewType, -1)">
+                <span class="site-title">My Forms</span>
+                <section style="width: 10vw;"></section>
+                <md-radio-button value="0" class="md-primary" id="rdoCurrent" ng-disabled="readOnly">Current Forms</md-radio-button>
+                <md-radio-button value="1" id="rdoSent" ng-disabled="readOnly">Sent Forms</md-radio-button>
+                <md-radio-button value="2" id="rdoCompleted" ng-disabled="readOnly" ng-class="tb300">Completed Forms</md-radio-button>
+                <section style="width: 35vw;"></section>
+                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="home" />
+            </md-radio-group>
+        </div>
+        <div class="divFormList">
+            <div ag-grid="grdForms" id="grdForms" class="ag-theme-fresh" style="height: 99%; width:auto; max-width:99.5%;"></div>
+        </div>
+    </div>
+    <script src='~/Areas/Common/JS/MyForms.js' type="text/javascript"></script>
+    <link href="~/Areas/Common/CSS/MyForms.css" rel="stylesheet" type="text/css" />
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/History.js' type="text/javascript"></script>
+</div>

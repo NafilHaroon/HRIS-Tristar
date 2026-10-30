@@ -1,0 +1,78 @@
+﻿.cssSearch
+{
+    height: 79vh;
+    width: 82vw;
+    background: radial-gradient(circle, #dec99c, #f1eded);
+}
+
+.cssSearchResult
+{
+    height: 72vh;
+    width: 82vw;
+    overflow: scroll;
+    scrollbar-face-color: #dec99c;
+}
+
+.tblScreenParameter
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 10pt;
+}
+
+.tblScreenParameter thead tr
+{
+    height: 12px;    
+}
+
+.tblSearch
+{
+    height: 43vh;
+    width: 80vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.tblSearch thead {
+    background-color: #dec99c;
+    color: #580707;
+    margin: 0px;
+    padding: 0px;
+    font-size: small;
+    border: solid 2px maroon;
+}
+
+.tblSearch thead tr th
+{
+    max-height: 12px;
+}
+
+.tblSearch tbody
+{
+    height: 44vh;
+    width: 81.25vw;
+    overflow: auto;
+}
+
+.tblSearch tbody tr
+{
+    max-height: 12px;    
+}
+
+.tblSearch tbody tr td
+{
+    font-family: Arial;
+    font-size: small;
+}
+
+.tblSearch tbody tr:nth-child(odd) {
+  background: #fbe7f8;
+}
+
+.tblSearch tbody tr:nth-child(even) {
+    background: #ddf6f1;
+}
+
+.tblSearch tbody tr:hover {
+  background: blue;
+  color: white;
+}

@@ -1,0 +1,110 @@
+INCOME TAX CALCULATION - INFORMATION REQUIRED FROM HR & FINANCE
+==================================================================
+
+Employee: Zawin Mustafa (Code: TSTS923619, Employee ID: 3598)
+Designation: Country Finance Manager - Accounts & Finance
+Tax Year: 2027 (Jul 2026 - Jun 2027)
+Period under review: 202609 (September 2026)
+Prepared for: HR & Finance review
+Date: 2026-09-15
+
+------------------------------------------------------------------
+1. BACKGROUND
+------------------------------------------------------------------
+
+The payroll system (HRIS) is currently calculating Zawin Mustafa's
+monthly Income Tax deduction as Rs. 152,996. HR/Finance has
+indicated the correct monthly deduction should be Rs. 133,944.
+
+The system's calculation was independently verified (read-only, no
+data changed) and found to be internally consistent - it correctly
+uses the confirmed annual Tax Liability, the tax actually
+deducted/posted so far this tax year, and an existing tax credit
+already on record. The Rs. 152,996 figure is not the result of a
+software defect; it reflects the data currently entered in the
+system.
+
+The Rs. 19,052 gap (152,996 - 133,944) therefore most likely
+corresponds to a tax credit, rebate, or adjustment that
+Finance/HR has accounted for in their own calculation but that has
+not yet been entered into the system's Tax Credit / Tax Debit
+records for this employee.
+
+------------------------------------------------------------------
+2. CURRENT SYSTEM CALCULATION (for reference)
+------------------------------------------------------------------
+
+  Annual Taxable Income .......................... Rs. 8,259,480
+  Annual Tax Liability (Total Tax) ............... Rs. 1,864,818
+  Tax already deducted/posted (Jul + Aug 2026) ... Rs.   273,742
+  Tax Credit already recorded in system .......... Rs.    61,116
+  Remaining tax to be collected .................. Rs. 1,529,960
+  Remaining months in tax year (Sep 2026-Jun 2027)         10
+  Resulting monthly deduction .................... Rs.   152,996
+
+To arrive at Rs. 133,944/month instead, the system would need a
+total recorded Tax Credit of approximately Rs. 251,636 (i.e., an
+additional ~Rs. 190,520 of credit beyond what is currently
+recorded) - equivalent to roughly Rs. 843,000+ of documented
+investment/contribution, depending on which credit category
+applies and its cap (see Section 3).
+
+------------------------------------------------------------------
+3. INFORMATION REQUIRED FROM FINANCE & HR
+------------------------------------------------------------------
+
+Please confirm the following so the correct credit/adjustment can
+be entered against the employee's record:
+
+1. Basis of the Rs. 133,944 figure
+   Please share the calculation/worksheet used to arrive at this
+   number.
+
+2. Which tax credit category applies to this employee?
+   (select from the categories already configured in the system)
+
+     Category                                          Cap
+     -------------------------------------------------- --------------------------------
+     Investment in Shares and Insurance (U/s 62)         Lower of Rs. 2,000,000 or 20% of
+                                                          taxable income
+     Investment in Health Insurance (U/s 62A)             Lower of Rs. 150,000 or 5% of
+                                                          taxable income
+     Contribution to Approved Pension Fund (U/s 63)       Lower of Rs. 2,000,000 or 20% of
+                                                          taxable income
+     Charitable Donations - Non-prescribed (U/s 61)       Lower of Rs. 9,999,999 or 30% of
+                                                          taxable income
+     Zakat (U/s 60)                                       -
+     Donation to Prescribed Institutions (Cl. 61, 2nd     -
+       Sch.)
+     Income Tax Adjustment (general/manual)               -
+
+3. Actual claimed amount
+   The exact investment / premium / contribution / donation
+   amount being claimed, with supporting documentation.
+
+4. Approval status
+   Has this credit been formally approved and documented? (The
+   system only applies a credit once it is marked approved.)
+
+5. Duration
+   Is this a one-time adjustment for this period, or does it
+   apply for the remainder of the tax year (Sep 2026 - Jun 2027)?
+
+6. Confirmation of Total Tax (Rs. 1,864,818)
+   Please reconfirm this annual liability figure is still
+   correct, so any difference is isolated to the missing credit
+   only.
+
+------------------------------------------------------------------
+4. NEXT STEPS
+------------------------------------------------------------------
+
+Once the above is confirmed and the supporting credit/adjustment
+is entered into the system's Tax Credit records for this employee,
+the system will recalculate the monthly deduction automatically
+and correctly - without requiring any manual override that could
+be lost on the next payroll run.
+
+------------------------------------------------------------------
+This document was prepared to support a data correction request;
+no changes have been made to any system records.

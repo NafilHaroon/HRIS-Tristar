@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="~/Content/Icon/agility_pri_fc_proc.ico" type="image/ico" />
+    <title>Agility PK HRIS ver 1.3.2</title>
+
+    <script src='~/Scripts/jquery-3.3.1.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/jQuery/jquery-ui-1.12.1.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/jQuery/jquery.validate.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/jQuery/jquery.validate.unobtrusive.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/jQuery/jquery.unobtrusive-ajax.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/Angular/angular.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/bootstrap.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/bootstrap-datepicker.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/Angular/angular-animate.min.js'></script>
+    <script src='~/Scripts/angular-ui/ui-bootstrap.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/angular-ui/ui-bootstrap-tpls.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/NumericValidation.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/FormLayout.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/DatePicker.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/FormHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/ag-grid/ag-grid-community.min.js' type="text/javascript"></script>
+    <script src='~/Scripts/Angular/angular-aria.min.js'></script>
+    <script src='~/Scripts/Angular/angular-messages.min.js'></script>
+    <script src='~/Scripts/Angular/angular-material.min.js' type="text/javascript"></script>
+
+    <link href='~/Content/themes/humanity/jquery-ui.min.css' rel="stylesheet" type="text/css" />
+    <script src='~/Scripts/FileSaver.min.js' type="text/javascript"></script>
+    <link href='~/Content/bootstrap.min.css' rel="stylesheet" type="text/css" />
+    <link href='~/Content/bootstrap-datepicker.min.css' rel="stylesheet" type="text/css" />
+    <link href='~/Scripts/ag-grid/styles/ag-grid.css' rel="stylesheet" type="text/css" />
+
+    <link href='~/Content/Css/FormSite.css' rel="stylesheet" type="text/css" />
+    <link href='~/Content/Css/Toolbar.css' rel="stylesheet" type="text/css" />
+    <link href='~/Content/angular-material.min.css' rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        .ui-widget-overlay {
+            background-color: lightgoldenrodyellow;
+        }
+    </style>
+    <div id="dialog-load-small" style="display: none; overflow:hidden;">
+        <img src="~/Content/Images/loading.gif" class="imgLoading" />
+    </div>
+    <div id="dialog-writing-small" style="display: none; overflow:hidden;">
+        <img src="~/Content/Images/Writing.gif" class="imgWriting" />
+    </div>
+</head>
+
+<body>
+    <div id="divBody">
+        <script type="text/javascript">
+            showFormLoading();
+        </script>
+        <input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session["UserId"]" />
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+<div id="dialog-wait-large" style="display: none; overflow:hidden;">
+    <h3>Requested screen is being prepared for you....</h3>
+    <marquee>
+        <h3 style="color:maroon;">Sit back and relax while we are processing your request</h3>
+    </marquee>
+    <img src="~/Content/Images/processing-halfcircle.gif" height="68%" width="88%" style="left:10px; vertical-align:middle;" />
+</div>
+
+<div id="dialog-wait-small" style="display: none; overflow:hidden;">
+    <img src="~/Content/Images/processing.gif" class="waitImgSmall" />
+    <marquee><h3 style="color:maroon;">Please wait while we are processing your request....</h3></marquee>
+</div>
+
+<div id="dialog-delete" style="display: none; height:200px; width:400px; overflow:hidden;">
+    <table border="0">
+        <tr>
+            <td rowspan="2">
+                <img src="~/Content/Images/redalert.gif" height="100" width="100" style="vertical-align:middle;" />
+            </td>
+            <td>
+                <h3 style="color:red; font-size:medium;">Are you sure you want to delete selected entry permanently?</h3>
+            </td>
+        </tr>
+        <tr>
+            <td>Remember that this action is irreversible!</td>
+        </tr>
+    </table>
+</div>
+
+<div id="dialog-Approved" style="display: none; height: 200px; width: 400px; overflow: hidden; ">
+
+</div>
+
+<div id="divAddAttachment" style="display: none">
+</div>
+
+<div id="divDeleteAttachment" style="display: none">
+    <p>
+        <span class="ui-icon ui-icon-trash" style="float: left; margin: 0 7px 20px 0;"></span>
+        Are you sure want to delete selected Attachment?
+    </p>
+</div>
+
+<script type="text/javascript">
+    $.ajaxSetup({ cache: false });
+
+    $(document).ready(function () {
+        $("input:text").focus(function () { $(this).select(); });
+    });
+    window.RootUrl = '@Url.Content("~/")';
+</script>

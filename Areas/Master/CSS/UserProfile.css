@@ -1,0 +1,79 @@
+﻿.nav-pills .nav-link {
+    border-radius: 0.25rem;
+    text-indent: 0px;
+    width: 60px;
+    height: 50px;
+}
+
+.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 50px;
+}
+
+.divOptionScreen {
+    height: 60vh;
+    width: 45vw;
+    float: left;
+}
+
+.divOptionGrid {
+    height: 60vh;
+    width: 40vw;
+    float: left;
+}
+
+.divBranchScreen {
+    height: 60vh;
+    width: 50vw;
+    float: left;
+}
+
+.divBranchGrid {
+    height: 60vh;
+    width: 35vw;
+    float: left;
+}
+
+.divCompanyScreen {
+    height: 60vh;
+    width: 50vw;
+    float: left;
+}
+
+.divCompanyGrid {
+    height: 60vh;
+    width: 35vw;
+    float: left;
+}
+
+.divGradeScreen {
+    height: 60vh;
+    width: 50vw;
+    float: left;
+}
+
+.divGradeGrid {
+    height: 60vh;
+    width: 35vw;
+    float: left;
+}
+
+.divRoleScreen {
+    height: 60vh;
+    width: 50vw;
+    float: left;
+}
+
+.divRoleGrid {
+    height: 60vh;
+    width: 35vw;
+    float: left;
+}
+
+.navlinkImg {
+    height: 100%;
+    width: 100%;
+}

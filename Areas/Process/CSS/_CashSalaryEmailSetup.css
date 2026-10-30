@@ -1,0 +1,23 @@
+﻿.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 50px;
+    /*height: auto;*/
+}
+
+.divEmailSetupScreen {
+    width: 80vw;
+    height: 65vh;
+    float: left;
+}
+
+.divEmailSetupGrid {
+    height: 65vh;
+    width: 75vw;
+}
+.divToolbar {
+    height: 35px;
+    width: 100%;
+}

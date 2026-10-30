@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Monthly Allowance Upload</title>
+</head>
+
+<body ng-app="HRIS">
+    <div ng-controller="MonthlyAllowanceUploadController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Monthly Allowanc(es) Upload</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">File Upload</label>
+                        </td>
+                        <td colspan="4">
+                            <div>
+                                <div class="float-left">
+                                    <input type="file" name="fUpload" style="width:25vw;"
+                                           accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                           data-val="true" id="fuAttachment"
+                                           data-val-accept="Sorry, we only accept Excel format." />
+                                </div> 
+                                <div class="float-left">
+                                    <button type="button" id="btnSave" ng-click="tbUpload()" title="Click to upload the Monthly Allowances from Excel" class="upload"/>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td colspan="4" rowspan="2">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="8">
+                            <div class="divMAUploadGrid">
+                                <div ag-grid="grdOptMAUpload" id="grdMAUpload" class="ag-theme-fresh" style="height: 98%; width:auto; max-width:100%;"></div>
+                            </div>
+                        </td>
+                        <td valign="bottom">
+                            <button type="button" id="btnExport" ng-click="tbExport()" class="export" title="Click to Export the result" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <a class="Template" href="/HRIS/Process/MonthlyAllowanceUpload/DownloadTemplate"
+                               target="_blank" title="Click to download Monthly Allowance Upload Template, you can use this template to upload Monthly Allowance from excel">Download Template</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Process/JS/MonthlyAllowanceUpload.js' type="text/javascript"></script>
+    <link href="~/Areas/Process/CSS/MonthlyAllowanceUpload.css" rel="stylesheet" type="text/css" />
+</body>
+</html>

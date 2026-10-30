@@ -1,0 +1,559 @@
+﻿button
+{
+    cursor: pointer;
+    border: none;
+    height: 35px;
+    width: 35px;
+    background-color: transparent;
+    float: left;
+}
+
+button:hover
+{
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+}
+
+button[disabled]
+{
+    pointer-events: none !important;
+    opacity: 0.4;
+    background-color: rgba(128,128,128, 0.7);
+}
+
+button[disabled]:hover
+{
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+
+button.recall {
+    background:url(../Icon/Recall.png) no-repeat center;
+    background-size: contain;
+}
+
+button.discount {
+    background: url(../Icon/DiscountVoucher.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+button.transfer {
+    background: url(../Icon/transfer.png) no-repeat center center;
+    background-size: contain;
+}
+
+/*button.recall:disabled {
+    background:url(../Icon/gRecall.png) no-repeat center;
+    background-size: contain;
+}*/
+
+button.add {
+    background:url(../Icon/Add.png) no-repeat center;
+}
+
+/*button.add:disabled {
+    background:url(../Icon/gAdd.png) no-repeat center;
+}*/
+
+button.delete {
+    background:url(../Icon/Delete.png) no-repeat;
+}
+
+/*button.delete:disabled {
+    background:url(../Icon/gDelete.png) no-repeat;
+}*/
+
+button.edit {
+    background:url(../Icon/Edit.png) no-repeat;
+}
+
+/*button.edit:disabled {
+    background:url(../Icon/gEdit.png) no-repeat;
+}*/
+
+button.find {
+    background:url(../Icon/Search.png) no-repeat;
+}
+
+button.save {
+    background:url(../Icon/Save.png) no-repeat;
+}
+
+button.undo {
+    background:url(../Icon/Undo.png) no-repeat;
+    text-indent: -9999px;
+}
+
+button.exit {
+    background:url(../Icon/Exit.png) no-repeat;
+}
+
+button.draft {
+    background:url(../Icon/Draft.png) no-repeat;
+}
+
+button.close_open {
+    background:url(../Icon/CloseOpen.jpg) no-repeat;
+    background-size: contain;
+}
+
+button.cancel {
+    background: url(../Icon/cancel.jpg) no-repeat;
+}
+
+button.go {
+    background: url(../Icon/go_ahead.png) no-repeat;
+    text-indent: -9999px;
+    width: 50px;    /*standard width override due to larger icon*/
+    height: 45px;   /*standard height override due to larger icon*/
+}
+
+button.back {
+    background: url(../Icon/go_back.png) no-repeat;
+    text-indent: -9999px;
+    width: 50px;    /*standard width override due to larger icon*/
+    height: 45px;   /*standard height override due to larger icon*/
+}
+
+button.load{
+    background: url(../Icon/Options.png) no-repeat center center;
+    background-size: contain;
+    height: 27px;
+    width: 25px;
+    margin-left:1px;
+    margin-top:6px;
+}
+
+button.clear {
+    background: url(../Icon/clear.jpg) no-repeat center center;
+    background-size: contain;
+    height: 27px;
+    width: 25px;
+    margin-left: 1px;
+    margin-top: 6px;
+}
+
+button.home {
+    background: url(../Icon/home.png) no-repeat;
+    height: 40px;
+    width: 40px;
+    align-content: center;
+}
+
+button.allocate {
+    background: url(../Icon/Allocate.png) no-repeat center center;
+}
+
+button.upload {
+    background: url(../Icon/Upload.png) no-repeat center center;
+    height: 40px;
+}
+
+button.download {
+    background: url(../Icon/download.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+button.export {
+    background: url(../Icon/exporticon.png) no-repeat center center; width: 55px ;
+}
+
+button.editLineTiny {
+    background:url(../Icon/EditTiny.png) no-repeat;
+    height: 25px;
+    width: 23px;
+}
+
+button.saveLineTiny {
+    background:url(../Icon/SaveTiny.png) no-repeat;
+    height: 25px;
+    width: 23px;
+}
+
+button.UndoLineTiny {
+    background:url(../Icon/UndoTiny.png) no-repeat;
+    height: 25px;
+    width: 23px;
+}
+
+button.NonEditLineTiny {
+    background:url(../Icon/nonedit.png) no-repeat;
+    height: 25px;
+    width: 23px;
+}
+button.deleteLineTiny {
+    background:url(../Icon/DeleteTiny.png) no-repeat;
+    height: 25px;
+    width: 23px;
+}
+
+button.addLineTiny {
+    background:url(../Icon/AddTiny.png) no-repeat;
+    height: 25px;
+    width: 23px;
+}
+
+
+button.transfer{
+    background: url(../Icon/transfer.png) no-repeat center center;
+    height: 50px;
+    width:50px;
+ }
+
+button.verify{
+    background: url(../Icon/Close.png) no-repeat center center;
+    height: 50px;
+    width:50px;
+}
+
+button.postSalary {
+    background: url(../Icon/Archive.jpg) no-repeat center center;
+    height: 130px;
+    width: 110px;
+}
+
+button.processSalary{
+    background: url(../Icon/ProcessPayroll.png) no-repeat center center;
+    height: 130px;
+    width:110px;
+}
+
+button.exitLarge {
+    background: url(../Icon/Exit-Large.png) no-repeat;
+    height: 130px;
+    width: 110px;
+    background-size: cover;
+}
+
+button.changeManager {
+    background: url(../Icon/ChangeManager.png) no-repeat;
+    height: 130px;
+    width: 150px;
+    background-size: cover;
+}
+
+button.history {
+    background: url(../Icon/history.png) no-repeat;
+    width: 40px;
+}
+
+button.history-tiny {
+    background: url(../Icon/history.png) no-repeat;
+    width: 25px;
+    background-size: contain;
+}
+
+button.submit {
+    background: url(../Icon/Submit.png) no-repeat;
+    width: 50px;
+}
+
+button.approve {
+    background: url(../Icon/approve.png) no-repeat;
+    width: 35px;
+}
+
+button.reject {
+    background: url(../Icon/Reject.png) no-repeat center;
+    width: 60px;
+}
+
+button.return {
+    background: url(../Icon/Return.png) no-repeat;
+}
+
+button.ceo {
+    background: url(../Icon/CEO.jpg) no-repeat;
+    width: 35px;
+    background-size: contain;
+}
+
+/*default style for link button*/
+/*a {
+    display: block;
+    cursor: pointer;
+    float: inherit;
+    width: 35px;
+    height: 35px;
+    text-indent: -9999px;
+}*/
+
+a[disabled]
+{
+    pointer-events: none !important;
+    opacity: 0.4;
+    background-color: rgba(128,128,128, 0.7);
+}
+
+a:hover
+{
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+}
+
+a[disabled]:hover
+{
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+
+a:focus
+{
+    border: 1px groove #FF3334;
+}
+
+a.find {
+    background: url(../Icon/Search.png) no-repeat top left;
+}
+
+a.addLine {
+    background: url(../Icon/add.png) no-repeat center center;
+    height: 25px;
+    width: 23px;
+}
+
+a.addLineTiny {
+    background: url(../Icon/AddTiny.png) no-repeat center center;
+     height: 25px;
+    width: 23px;
+}
+
+a.deleteLineTiny {
+    background: url(../Icon/DeleteTiny.png) no-repeat center center;
+    height: 25px;
+    width: 23px;
+}
+
+a.UploadIcon {
+    background: url(../Icon/uploadicon.png) no-repeat center center;
+    height: 25px;
+    width: 23px;
+}
+
+a.editLine {
+    background: url(../Icon/EditTiny.png) no-repeat center center;
+    height: inherit;
+    width: inherit;
+}
+
+a.deleteLine {
+    background: url(../Icon/DeleteTiny.png) no-repeat center center;
+    height: inherit;
+    width: inherit;
+}
+
+a.deleteLine[disabled] {
+    background: url(../Icon/gDelete.png) no-repeat center center;
+}
+
+a.viewLine {
+    background: url(../Icon/download.png) no-repeat center center;
+    height: 25px;
+    width: 23px;
+}
+
+a.viewLine[disabled] {
+    background: url(../Icon/gView.png) no-repeat center center;
+}
+
+a.splitLine {
+    background: url(../Icon/Split.jpg) no-repeat center center;
+    height: inherit;
+    width: inherit;
+}
+
+a.history {
+    background: url(../Icon/history.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.deleteSelected {
+    background: url(../Icon/Delete.png) no-repeat center center;
+    background-size: contain;
+    height: 20px;
+}
+
+a.cancel{
+    background: url(../Icon/Cancel.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.approve {
+    background: url(../Icon/approve.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.reject{
+    background: url(../Icon/Reject.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.resolve{
+    background: url(../Icon/Resolve.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.Invoice {
+    background: url(../Icon/Invoice.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.return{
+    background: url(../Icon/Return.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.open{
+    background: url(../Icon/open.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.transfer{
+    background: url(../Icon/transfer.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.received{
+    background: url(../Icon/receipt.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.allocate {
+    background: url(../Icon/Allocate.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.unallocate {
+    background: url(../Icon/UnAllocate.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.shipped {
+    background: url(../Icon/Shipped.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.Forward{
+    background: url(../Icon/Forward.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.Resolve{
+    background: url(../Icon/Resolve.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.acknowledge{
+    background: url(../Icon/acknowledge.PNG) no-repeat center center;
+    background-size: contain;
+}
+
+a.reverse{
+    background: url(../Icon/Reverse.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.realize{
+    background: url(../Icon/Realized.png) no-repeat center center;
+    background-size: contain;
+}
+
+a.RequestForInfo {
+    background: url(../Icon/RequestForInfo.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+a.discount {
+    background: url(../Icon/DiscountVoucher.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+a.download {
+    background: url(../Icon/download.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+a.Template
+{
+    display: block;
+    width: 12vw;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: darkblue;
+    text-indent: 1px;
+    padding-top: 2px;
+    float: inherit;
+}
+
+/*override to ensure Jquery dtpicker calendar remain within its body*/
+.ui-datepicker td a {
+    width: 30px;
+    height: 20px;
+    font-size: 10px;
+    vertical-align: central;
+}
+
+.ui-datepicker-unselectable span.ui-state-default {
+    background: #f4f4f4;
+    color: #b4b3b3;
+    width: 30px;
+    height: 20px;
+    font-size: 10px;
+    vertical-align: central;
+}
+
+.ui-datepicker th {
+    background-color: maroon;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: central;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .delete {
+    color: red;
+}
+
+.tooltip {
+	border-bottom: 1px dotted #000000; color: #000000; outline: none;
+	cursor: help; text-decoration: none;
+	position: relative;
+}
+
+.tooltip span {
+	margin-left: -999em;
+	position: absolute;
+}
+
+.tooltip:hover span {
+	border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+	font-family: Calibri, Tahoma, Geneva, sans-serif;
+	position: absolute; left: 1em; top: 2em; z-index: 99;
+	margin-left: 0; width: 250px;
+}
+
+.tooltip:hover img {
+	border: 0; margin: -10px 0 0 -55px;
+	float: left; position: absolute;
+}
+
+.tooltip:hover em {
+	font-family: Candara, Tahoma, Geneva, sans-serif; font-size: 1.2em; font-weight: bold;
+	display: block; padding: 0.2em 0 0.6em 0;
+}
+
+.classic { padding: 0.8em 1em; }
+.custom { padding: 0.5em 0.8em 0.8em 2em; }
+* html a:hover { background: transparent; }
+.classic {background: #FFFFAA; border: 1px solid #FFAD33; }
+.critical { background: #FFCCAA; border: 1px solid #FF3334;	}
+.help { background: #9FDAEE; border: 1px solid #2BB0D7;	}
+.info { background: #9FDAEE; border: 1px solid #2BB0D7;	}
+.warning { background: #FFFFAA; border: 1px solid #FFAD33; }
+

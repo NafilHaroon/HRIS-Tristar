@@ -1,0 +1,20 @@
+﻿
+.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 50px;
+    /*height: auto;*/
+}
+
+.divLEUploadScreen {
+    width: 70vw;
+    height: 65vh;
+    float: left;
+}
+
+.divLEUploadGrid {
+    height: 65vh;
+    width: 65vw;
+}

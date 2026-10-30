@@ -1,0 +1,25 @@
+﻿.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 50px;
+    height: 45px;
+    /*height: auto;*/
+}
+
+.divMonthlyLeaveScreen {
+    width: 45vw;
+    height: 80vh;
+    float: left;
+}
+
+.divMonthlyLeaveGrid {
+    height: 80vh;
+    width: 45vw;
+}
+
+.divToolbar {
+    height: 35px;
+    width: 100%;
+}

@@ -1,0 +1,130 @@
+﻿<fieldset>                             
+    <table id="tblPersonalDetail" class="tblEmployeeTab">
+        <tr>
+            <td>
+                <label class="mandatoryKey">Gender</label>
+            </td>
+            <td>
+                <select ng-options="g.GenderId as g.GenderName for g in lstGender" ng-model="Employee.EmpPersonalInfo.GenderId" class="form-control">
+                    <option disabled value="">-Select Gender-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey">Marital Status</label>
+            </td>
+            <td>
+                <select ng-options="ms.MaritalStatusId as ms.MaritalStatusName for ms in lstMaritalStatus" ng-model="Employee.EmpPersonalInfo.MaritalStatusId" class="form-control">
+                    <option disabled value="">-Select Marital Status-</option>
+                </select>
+            </td>
+
+            <td>
+                <label class="mandatoryKey">Qualification</label>
+            </td>
+            <td>
+                <select ng-options="q.QualificationId as q.QualificationName for q in lstQualification" ng-model="Employee.EmpPersonalInfo.QualificationId" class="form-control">
+                    <option disabled value="">-Select Qualification-</option>
+                </select>
+            </td>
+            <td>
+                <label class="mandatoryKey" ng-show="Employee.EmpPersonalInfo.GenderId==2 && Employee.EmpPersonalInfo.MaritalStatusId==1">Husband Name</label>
+            </td>
+            <td colspan="2">
+                <input type="text" ng-model="Employee.EmpPersonalInfo.HusbandName" maxlength="50" class="form-control tb300"
+                       ng-show="Employee.EmpPersonalInfo.GenderId==2 && Employee.EmpPersonalInfo.MaritalStatusId==1" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey">Nationality</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.Nationality" maxlength="50" class="form-control tb150"/>
+            </td>
+            <td>
+                <label class="mandatoryKey">CNIC #</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.CNICNo" maxlength="15" class="form-control tb150"  id="CNIC"  />
+            </td>
+            <td>
+                <label class="mandatoryKey">Family #</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.FamilyNo" maxlength="6" class="form-control tb100"  />
+            </td>
+            <td>
+                <label>NTN</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.NTN" maxlength="15" class="form-control tb150"  />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Religion</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.Religion" maxlength="30" class="form-control tb150" />
+            </td>
+            <td>
+                <label>Cell #</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.CellNo" maxlength="12" class="form-control tb150" />
+            </td>
+            <td>
+                <label>Phone #</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.PhoneNo" maxlength="12" class="form-control tb150" />
+            </td>
+            <td>
+                <label>Personal Email</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.PersonalEmail" maxlength="30" class="form-control tb175" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey">Birth Date</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.BirthDate" id="dpBirth" maxlength="11" class="form-control dateField"/>
+            </td>
+            <td>
+                <label class="mandatoryKey">Working Since</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmpPersonalInfo.WorkingSince" id="dpWorkingSince" maxlength="11" class="form-control dateField"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label class="mandatoryKey">Current Address</label>
+            </td>
+            <td colspan="3" rowspan="2">
+                <textarea id="tradd" rows="2" cols="50" maxlength="200" ng-model="Employee.EmpPersonalInfo.CurrentAddress" class="form-control tb350"></textarea>
+            </td>
+
+            <td>
+                <md-switch ng-model="Employee.EmpPersonalInfo.DifferentPermanentAdd" title="Turn on if permanent address is different from current Address">
+                    {{Employee.EmpPersonalInfo.DifferentPermanentAdd ? "Permanent" : "Same Permanent"}} Address</md-switch>
+            </td>
+            <td colspan="3" rowspan="2">
+                <textarea id="tpadd" rows="2" cols="50" maxlength="200" ng-model="Employee.EmpPersonalInfo.PermanentAddress" class="form-control tb350"
+                          ng-if="Employee.EmpPersonalInfo.DifferentPermanentAdd"></textarea>
+            </td>
+        </tr>
+        <tr/>
+    </table>
+ </fieldset>
+ 
+
+

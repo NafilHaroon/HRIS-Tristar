@@ -1,0 +1,17 @@
+﻿<div class="divSalaryScreen">
+    <div class="divSalaryGrid">
+        <div class="divToolbar">
+            <button ng-click="onAddSalary()" class="add" title="Add Salary Head"></button>
+            <button ng-click="onDeleteSalary()" class="delete" title="Remove Salary Head"></button>
+        </div>
+        <div ag-grid="grdOptSalary" id="grdSalary" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+    </div>
+    <div class="divSeparator"></div>
+    <div class="divSalaryGrid">
+        <div class="divToolbar">
+            <button ng-click="onAddCostAllocation()" class="add" title="Add Cost Alloc"></button>
+            <button ng-click="onDeleteCostAllocation()" class="delete" title="Delete Cost Allocation Line"></button>
+        </div>
+        <div ag-grid="grdOptCostAlloc" id="grdCostAllocation" class="ag-theme-fresh" style="height: 80%; width:auto; max-width:100%;"></div>
+    </div>
+</div>

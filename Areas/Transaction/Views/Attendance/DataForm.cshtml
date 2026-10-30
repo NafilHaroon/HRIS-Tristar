@@ -1,0 +1,69 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="AttendanceController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Monthly Attendance</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnEdit" title="Click to edit Attendance for this employee" class="edit" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Employee</label>
+                        </td>
+                        <td colspan="2">
+                            <select ng-options="e.EmployeeId as e.EmployeeName for e in lstEmployee"
+                                    ng-model="Attendance.EmployeeId" ng-change="getAttendanceById(Attendance.EmployeeId)" class="form-control tb300" id="ddEmployee">
+                                <option disabled value="">-Select Employee-</option>
+                            </select>
+                        </td>
+                        <td />
+                        <td colspan="4" rowspan="4">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                        <td colspan="2"/>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Period</label>
+                        </td>
+                        <td colspan="2">
+                            <input type="text" id="txtPeriod" ng-model="Attendance.PeriodName" class="form-control tb200" readonly tabindex="-1"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <div class="divAttendanceGrid">
+                                <div ag-grid="grdOptAttendance" id="grdAttendance" class="ag-theme-fresh" style="height: 99%; width:auto; max-width:100%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Transaction/JS/Attendance.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/DateHelper.js' type="text/javascript"></script>
+    <script src="~/Scripts/jQuery/jquery.timepicker.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href='~/Scripts/jQuery/jquery.ui.datepicker.css' />
+    <link rel="stylesheet" type="text/css" href='~/Scripts/jQuery/jquery.timepicker.css' />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Transaction/CSS/Attendance.css" />
+</div>

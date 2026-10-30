@@ -1,0 +1,62 @@
+//#region Leave details
+    //$scope.AddLeave = function () {
+    //    try {
+    //        //Add the new item to the Array.
+    //        var LI = document.getElementById('LeaveId').value;
+    //        var AD = document.getElementById('AllowedDays').value;
+    //        var DD = document.getElementById('DueDate').value;
+    //        var DID = document.getElementById('DetailId').value;
+    //        var ST = document.getElementById('Status').value;
+    //        var Index = document.getElementById('Row').value;
+    //        AD = parseInt(AD);
+    //        DID = DID === "" ? 0 : DID;
+
+    //        if (LI != "" && AD > 0 && DD != "") {
+    //            var detailid;
+    //            var ma = {};
+    //            if (Index != "")
+    //                $scope.Employee.EmpLeaveDetails.splice(Index, 1);
+
+    //            ma.AllowedDays = AD;
+    //            ma.DueDate = DD;
+    //            ma.LeaveId = LI;
+    //            ma.Status = DID <= 0 ? "Added" : "Edited";
+    //            if (DID == 0)
+    //                ma.DetailId = -1;
+    //            else {
+    //                ma.DetailId = DID;
+    //            }
+    //            $scope.Employee.EmpLeaveDetails.push(ma);
+    //            $scope.ClearLeave();
+    //            ma = {};
+    //        }
+    //        else {
+    //            alert("Please Select Valid Leave, Due Date and Allowed Days should be greater then zero. Before saving value in Grid. ");
+    //        }
+    //    }
+    //    catch (exception) { alert(exception.message);}
+    //};
+
+    //$scope.ClearLeave = function () {
+    //    document.getElementById('LeaveId').value = "";
+    //    document.getElementById('AllowedDays').value = 0;
+    //    document.getElementById('DueDate').value = "";
+    //    document.getElementById('DetailId').value = "";
+    //    document.getElementById('Status').value = "";
+    //};
+
+    //$scope.EditLeave = function (m, index) {
+    //    document.getElementById('LeaveId').value = m.LeaveId;
+    //    document.getElementById('AllowedDays').value = m.AllowedDays;
+    //    document.getElementById('DueDate').value = m.DueDate;
+    //    document.getElementById('DetailId').value = m.DetailId;
+    //    document.getElementById('Status').value = m.Status;
+    //    document.getElementById('Row').value = index;
+    //};
+
+    //$scope.RemoveLeave = function (index) {
+    //    if ($window.confirm("Do you want to delete selected Leave Setup?")) {
+    //        $scope.Employee.EmpLeaveDetails.splice(index, 1);
+    //    }
+    //};  
+    //#endregion

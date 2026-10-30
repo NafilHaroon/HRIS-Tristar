@@ -1,0 +1,165 @@
+﻿body {
+    height: 35vh;
+    background: radial-gradient(circle, #dec99c, white);
+    /*#f1eded*/
+    /*background: radial-gradient(ellipse farthest-corner at 360 36px, #edbf60, #fff);*/
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.site-title {
+    color: darkgoldenrod; 
+    font-family: Comic Sans MS;
+    font-size: 18pt;
+    margin: 0;
+    top: 0px;
+}
+
+.site-subtitle {
+    color: maroon;
+    font-family: 'Monotype Corsiva';
+    font-size: 11pt;
+    margin-left: 27px;
+    margin-top: 8px;
+}
+
+footer {
+    bottom: 0px;
+    position: fixed;
+    background-color: #e2e2e2;
+}
+
+.divVerticalHalf {
+    float: left;
+    display: table;
+    width: 49vw;
+    height: 97vh;
+}
+
+.divRow {
+    display: table-row;
+}
+
+.divCellLogin {
+    padding-top: 25vh;
+    padding-left: 12vw;
+    text-align: center;
+    float: none;
+    height: 25vh;
+    width: 15vw;
+}
+
+.divAppLogo {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    float: none;
+    height: 75vh;
+    padding-left: 5vw;
+}
+
+.divGILLogo {
+    display: table-cell;
+    vertical-align: top;
+    text-align: right;
+    float: none;
+    height: 15vh;
+}
+
+.divDisclaimer {
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: left;
+    float: none;
+    height: 15vh;
+    text-align: left;
+    color: lightslategrey;
+    font-size: 7pt;
+    padding-bottom: 5px;
+}
+
+.gilLogo {
+    width: 16vw;
+    height: 12vh;
+    padding-top: 5px;
+}
+
+.appLogo {
+    width: 35vw;
+    height: 50vh;
+}
+
+.developer {
+    text-align: center;
+    color: #CC3333;
+    font-size: medium;
+    display: inline-block;
+    width: 100vw;
+    font-family: Monotype Corsiva
+}
+
+.loginTable {
+    background: radial-gradient(circle, #dec99c, lightgoldenrodyellow);
+    /*    background-color: #dec99c;*/
+    box-shadow: 5px 10px 15px #888888;
+    border: solid;
+    border-width: thin;
+    border-color: lightslategrey;
+    width: 22vw;
+    height: 20vh;
+    padding-left: 2vw;
+}
+
+/*.loginTable
+{
+    box-shadow: 5px 10px 15px #888888; 
+    border:solid; 
+    border-width:thin; 
+    border-color:lightslategrey;
+    background-color: transparent;
+}*/
+
+.loginTitle
+{
+    font-weight: bold;
+    font-family:Tahoma;
+    font-size: 12pt;
+    color:darkgoldenrod;
+}
+
+label
+{
+    font-weight: bold;
+    font-family: Tahoma; 
+    font-size: 10pt;
+}
+
+.processingGIF {
+    height: 90%;
+    width: 100%;
+    left: 10px;
+    vertical-align: middle;
+}
+
+md-toast.md-success-toast-theme .md-toast-content {
+    background-color: white;
+    color: green;
+    border: 3px solid darkgreen;
+    border-radius: 25px;
+}
+
+md-toast.md-error-toast-theme .md-toast-content {
+    background-color: white;
+    color: red;
+    border: red solid 3px;
+    border-radius: 25px;
+}
+
+.errorMsg {
+    color: red;
+    font: 8px arial, verdana;
+}

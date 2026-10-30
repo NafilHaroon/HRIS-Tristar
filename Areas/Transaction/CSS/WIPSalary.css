@@ -1,0 +1,49 @@
+﻿.nav-pills .nav-link {
+    border-radius: 0.25rem;
+    text-indent: 0px;
+    width: 60px; 
+    height: 50px;
+}
+
+.nav .nav-pills .nav-item a.nav-link,
+.nav-pills .show > .nav-link {
+    text-indent: 0px !important;
+    font-weight: bold;
+    text-wrap: normal;
+    height: 75px;
+}
+
+.navlinkImg {
+    height: 100%;
+    width: 100%;
+}
+
+/*.divSalaryScreen {
+    width: 60vw;
+    height: 50vh;
+    float: left;
+}*/
+
+.divGridArea {
+    width: 77.5vw;
+    height: 50vh;
+    float: left;
+}
+
+.divSalaryGrid {
+    width: 40vw;
+    height: 45vh;
+    float: left;
+}
+
+.divEntitlementGrid {
+    width: 35vw;
+    height: 45vh;
+    float: left;
+    margin-left: 2vw;
+}
+
+.divToolbar {
+    height: 35px;
+    width: 30vw;
+}

@@ -1,0 +1,105 @@
+﻿
+#gridTable {
+   
+    border-collapse: collapse;    
+    grid-row-sizing: minmax();
+    table-layout: fixed;
+    background-color: #fff;
+    margin: 5px;
+    padding: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 2px #808080 solid;
+    width: inherit;
+    height: inherit;
+     font-size: 10pt;
+}
+
+
+
+#gridTable td, #gridTable th {
+    border: 1px solid #ddd;
+    padding: 1px;
+    width: inherit;
+     height: inherit;
+}
+
+#gridTable caption
+{
+    background-color: maroon;
+    color: white;
+    font-weight: bold;
+    height: 25px;
+     font-size: 10pt;
+    text-align:center;
+}
+
+.gridTable tfoot {
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    max-height: 10px;
+    margin-left: 5px;
+    text-align:right;
+}
+
+#gridTable tfoot tr{
+    padding: 0px;
+    margin: 0px;
+}
+
+#gridTable tfoot td{
+    font-weight: bold;
+   font-size: 9pt; 
+    background-color: #be994c;
+    color: maroon;
+    border: solid 2px #808080;
+    padding: 0px;
+    margin: 0px;
+}
+
+#gridTable tfoot input{
+    margin:0px;
+    height: 10px;
+}
+
+#gridTable tfoot input[readonly]{
+    color: white;
+    font: bold;
+    font-size: 9pt; 
+}
+
+#gridTable tfoot a{
+    font-weight: bold;
+    color: maroon; 
+    border: 2px #808080 solid;
+    text-indent: 0px;
+    text-align: center;
+    display: inline-block;
+    float: none;
+    height: 10px;
+    width: 20px;
+}
+
+
+#gridTable tr:nth-child(even){background-color: #e7f7bd;}
+
+
+#gridTable tr:hover {background-color: #d0f76c;}
+
+#gridTable th {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+#gridTable thead th {
+    font-size: 9pt;    
+    text-align: left;
+}
+
+

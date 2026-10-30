@@ -1,0 +1,30 @@
+﻿footer {
+    width: 99vw;
+    height: 12vh;
+    position: absolute;
+    margin-left: 0vw;
+    margin-bottom: 1vh;
+    bottom: 0px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.divAttachmentGrid {
+    height: 40vh;
+    width: 70vw;
+    float: left;
+}
+
+.divToolbarDoc {
+    height: 35px;
+    width: 100%;
+}
+
+.divAGGrid {
+    float: left;
+}
+
+a.Template {
+    width: 100%;
+    text-align: left;
+}

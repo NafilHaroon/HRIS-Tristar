@@ -1,0 +1,155 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="TaxDebitController" ng-init="formLoaded()" id="ngForm">
+        <fieldset>
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Tax Debit</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Tax Debit from lookup list" />
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnAdd" ng-click="tbAdd()" title="Click to create new Tax Debit" class="add" />
+                                <button type="button" id="btnEdit" ng-click="tbEdit()" title="Click to edit this Tax Debit" class="edit" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="primaryKey">Reference #</label>
+                        </td>
+                        <td>
+                            <input type="text" id="txtDebitId" ng-model="TaxDebit.TaxDebitId" numbers-only ng-keyup="$event.keyCode == 13  ? getTaxDebitById(TaxDebit.TaxDebitId) : null" maxlength="5" class="form-control tb100 tbRA" />
+                            <input type="hidden" id="hdnDebitId" value="@ViewBag.TaxDebitId" />
+                        </td>
+                        <td colspan="2">
+                            <input id="hdnCompleted" ng-model="TaxDebit.Completed" type="text" ng-show="false" />
+                            <input id="hdnOwner" ng-model="TaxDebit.Owner" type="text" ng-show="false" />
+                        </td>
+                        <td colspan="2" />
+                        <td colspan="4" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Employee</label>
+                        </td>
+                        <td colspan="2">
+                            <input ng-if="!ReviewMode" type="text" ng-model="TaxDebit.Employee" typeahead-editable="false"
+                                   uib-typeahead="e as e.EmployeeName for e in lstEmployee | filter:$viewValue | limitTo:10"
+                                   class="form-control tb350 tbUC" typeahead-show-hint="true" typeahead-min-length="2"
+                                   typeahead-select-on-exact="true" typeahead-select-on-blur="true" id="ddEmployee"
+                                   placeholder="-Select Employee-" title="Type minimum 2 characters to see the matching list">
+                            <label ng-if="ReviewMode" class="primaryKey tb350" ng-bind="TaxDebit.EmployeeName"></label>
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">Tax Year</label>
+                        </td>
+                        <td>
+                            <input type="number" ng-model="TaxDebit.TaxYear" maxlength="4" class="form-control tb100 tbRA" />
+                        </td>
+
+                        <td>
+                            <label class="mandatoryKey">Amount</label>
+                        </td>
+                        <td>
+                            <input type="number" ng-model="TaxDebit.Amount" maxlength="10" value="0" class="form-control tb150 tbRA" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Remarks</label>
+                        </td>
+                        <td colspan="2">
+                            <textarea id="txtRemarks" rows="5" cols="50" maxlength="500" class="form-control tb400" ng-model="TaxDebit.Remarks"></textarea>
+                        </td>
+                        <td>
+                            <label class="mandatoryKey">Tax Debit Type</label>
+                        </td>
+                        <td colspan="2">
+                            <select ng-if="!ReviewMode" ng-options="tc.TaxDebitTypeId as tc.TaxDebitTypeName for tc in lstTaxDebitType"
+                                    ng-model="TaxDebit.TaxDebitTypeId" class="form-control tb300" id="ddTaxDebitType">
+                                <option disabled value="">-Select Tax Debit Type-</option>
+                            </select>
+                            <label ng-if="ReviewMode" class="primaryKey tb400" ng-bind="TaxDebit.TaxDebitName"></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6" rowspan="6">
+                            <div id="divAttachment" class="divAttachmentGrid">
+                                <div class="divToolbarDoc">
+                                    <button ng-click="onAddAttachment()" class="add" title="Upload new Attachment"
+                                            ng-show="!TaxDebit.AddNew && TaxDebit.TaxDebitId && TaxDebit.Owner==TaxDebit.AuditTrail.CreatedBy && !TaxDebit.Completed"></button>
+                                </div>
+                                <div ng-show="TaxDebit.AddNew" style="width: 60vw; height: 5vw; background-color:lightgoldenrodyellow;" id="dvAttachment">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <label class="mandatoryKey">Attachment Type</label>
+                                            </td>
+                                            <td>
+                                                <select ng-options="dt.TypeId as dt.TypeName for dt in lstAttachmentType" ng-model="TaxDebit.AttachmentTypeId" class="form-control tb200" id="ddAttachmentType">
+                                                    <option disabled value="">-Select Attachment Type-</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="file" name="fUpload" style="width:25vw;"
+                                                       accept="application/pdf, application/vnd.ms-excel, image/gif, image/jpeg"
+                                                       data-val="true" id="fuAttachment"
+                                                       data-val-accept="Sorry, we only accept Excel & PDF format."
+                                                       title="Click to upload supporting attachment for this Tax Debit" />
+                                            </td>
+                                            <td>
+                                                <button type="button" id="btnUpload" ng-click="onUpload()" title="Click to upload the Selected Supporting Attachment" class="upload" />
+                                                <button ng-click="onUndoAttachment()" class="undo" title="Cancel Attachment Upload"></button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div ag-grid="grdAttachment" id="grdAttachment" class="ag-theme-fresh" style="height:80%; width:50vw;"></div>
+                            </div>
+                        </td>
+                        <td colspan="4" rowspan="6">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <footer>
+                <div id="FooterButtons" class="float-right">
+                    <button ng-show="TaxDebit.TaxDebitId != null && TaxDebit.Owner == '@Session["UserId"]' && !TaxDebit.Completed && TaxDebit.Owner == TaxDebit.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(TaxDebit.TaxDebitId, 2)" class="submit"
+                            title="Click to submit this Tax Debit Entry for approval" id="btnSubmit"></button>
+                    <button ng-if="TaxDebit.Owner == '@Session["UserId"]' && !TaxDebit.Completed && TaxDebit.Owner != TaxDebit.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(TaxDebit.TaxDebitId, 3)" class="approve" title="Click to Approve this Tax Debit Entry" id="btnApprove"></button>
+                    <button ng-if="TaxDebit.Owner == '@Session["UserId"]' && !TaxDebit.Completed && TaxDebit.Owner != TaxDebit.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(TaxDebit.TaxDebitId, 5)" class="return"
+                            title="Click to return this Tax Debit Entry to Sender" id="btnReturn"></button>
+                    <button ng-if="TaxDebit.Owner == '@Session["UserId"]' && !TaxDebit.Completed && TaxDebit.Owner != TaxDebit.AuditTrail.CreatedBy"
+                            ng-click="tbSubmission(TaxDebit.TaxDebitId, 4)" class="reject"
+                            title="Click to reject this Tax Debit Request. This Request will no longer be actionable once you reject it!" id="btnReject"></button>
+                    <button ng-click="tbHistory()" class="history" title="Click to view selected Tax Debit Request History" id="btnHistory"></button>
+                </div>
+                <ng-include src="'/HRIS/Helper/Pages/Footer.html'" />
+            </footer>
+        </fieldset>
+    </div>
+    <script src='~/Areas/Transaction/JS/TaxDebit.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/History.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/FormSubmission.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <link href="~/Areas/Transaction/CSS/TaxDebit.css" type="text/css" rel="stylesheet" />
+    <link href='~/Content/CSS/TypeAhead.css' rel="stylesheet" type="text/css" />
+</div>

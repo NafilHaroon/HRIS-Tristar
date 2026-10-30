@@ -1,0 +1,144 @@
+﻿<div ng-app="HRIS">
+    <div ng-controller="WIPSalaryController" ng-init="formLoaded()" id="ngForm">
+        <form id="frmWIPSalary">
+            <div id="divMain" class="float-left">
+                <table class="mainTable">
+                    <tr class="form-title-bg">
+                        <td colspan="5">
+                            <p class="form-title">Salary Processing</p>
+                        </td>
+                        <td colspan="5">
+                            <div id="divHToolbar" class="float-right">
+                                <button ng-click="tbSearch()" id="btnFind" class="find" title="Click to Search Employee from lookup list" />
+                                <button type="button" id="btnRecall" ng-click="tbRecall()" title="Click to recall existing record" class="recall" />
+                                <button type="button" id="btnEdit" title="Click to edit this WIP Salary" class="edit" />
+                                <button type="button" id="btnDelete" title="Click to delete this WIP Salary" class="delete" onclick="$('#dialog-delete').dialog('open');" />
+                                <button type="button" id="btnSave" ng-click="tbSave()" title="Click to Save the current record" class="save" />
+                                <button type="button" id="btnUndo" ng-click="tbUndo()" title="Click to clear the request" class="undo" />
+                                <button type="button" id="btnExit" ng-click="tbExit()" title="Click to close this window and go back to main menu" class="exit" />
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label class="mandatoryKey">Employee</label>
+                        </td>
+                        <td colspan="2">
+                            <select ng-options="d.EmployeeId as d.EmployeeName for d in lstEmployee"
+                                    ng-model="WIPSalary.EmployeeId" ng-change="getWIPSalaryById(WIPSalary.EmployeeId)" class="form-control tb300" id="ddEmployee">
+                                <option disabled value="">-Select Employee-</option>
+                            </select>
+                        </td>
+                        <td>
+                            @*<div class="form-check">
+                            <input type="checkbox" ng-model="WIPSalary.StopSalary" class="form-check-input" id="chkStopSalary" disabled />
+                            <label class="form-check-label" for="chkStopSalary">Stop Salary?</label>
+                        </div>*@
+                            <input type="hidden" id="hdAbsent" ng-model="WIPSalary.AbsentId" />
+                            <input type="text" style="display:none" id="hdVerified" ng-model="WIPSalary.Verified" />
+                            <img src="~/Content/Images/Verified.gif" height="50" width="100" ng-show="WIPSalary.Verified" />
+                        </td>
+                        <td>
+                            <label>Salary Period</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.PeriodName" class="form-control tb100" readonly tabindex="-1" />
+                        </td>
+                        <td colspan="4" />
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Branch Name</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.BranchName" class="form-control tb200" readonly tabindex="-1" />
+                        </td>
+                        <td>
+                            <label>Department Name</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.DepartmentName" class="form-control tb200" readonly tabindex="-1" />
+                        </td>
+                        <td>
+                            <label>Designation</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.Designation" class="form-control tb200" readonly tabindex="-1" />
+                        </td>
+                        <td>
+                            <label>Joining Date</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.JoiningDate" class="form-control tb100" readonly tabindex="-1" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Salary Days</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.SalaryDays" readonly class="form-control tb60 tbRA" tabindex="-1" />
+                        </td>
+                        <td>
+                            <label>Unpaid Days</label>
+                        </td>
+                        <td>
+                            <input type="number" ng-model="WIPSalary.UnpaidDays" id="txtUnpaidDays" value="0" min="0" max="31" onkeypress="return isNumberKey(event)" ng-change="CalculateSalary()" maxlength="2" class="form-control tb60 tbRA" />
+                        </td>
+                        <td>
+                            <label>Leave Days</label>
+                        </td>
+                        <td>
+                            <input type="number" ng-model="WIPSalary.LeaveDays" value="0" min="0" max="31" onkeypress="return isNumberKey(event)" maxlength="2" class="form-control tb60 tbRA" />
+                        </td>
+                        <td>
+                            <label>Paid Days</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="WIPSalary.PaidDays" readonly class="form-control tb60 tbRA" tabindex="-1" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="7" rowspan="3">
+                            <div class="divGridArea" style="margin:5px; padding-top:5px;">
+                                <div class="divSalaryGrid">
+                                    <div class="divToolbar">
+                                        <button ng-click="onAddSalary()" class="add" title="Add Salary Head"></button>
+                                        <button ng-click="onDeleteSalary()" class="delete" title="Remove Salary Head"></button>
+                                    </div>
+                                    <div ag-grid="grdOptSalary" id="grdSalary" class="ag-theme-fresh" style="height: 90%; width:auto; max-width:100%;"></div>
+                                </div>
+                                <div class="divEntitlementGrid">
+                                    <div class="divToolbar">
+                                        <button ng-click="onAddEntitlement()" class="add" title="Add Entitlement"></button>
+                                        <button ng-click="onDeleteEntitlement()" class="delete" title="Remove Entitlement"></button>
+                                    </div>
+                                    <div ag-grid="grdOptEntitlement" id="grdEntitlement" class="ag-theme-fresh" style="height: 90%; width:auto; max-width:100%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2" rowspan="3">
+                            <div class="validation-summary-errors" ng-if="errors && errors.length > 0">
+                                Validation Errors:<br />
+                                <span data-ng-repeat="error in errors">{{error}}<br /></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <footer>
+                <ng-include src="'/HRIS/Helper/Pages/Footer.html'" />
+            </footer>
+
+        </form>
+    </div>
+    <script src='~/Areas/Transaction/JS/WIPSalary.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/SearchHelper.js' type="text/javascript"></script>
+    <script src='~/Scripts/Agility/agGridHelper.js' type="text/javascript"></script>
+    <link href="~/Areas/Transaction/CSS/WIPSalary.css" rel="stylesheet" type="text/css" />
+</div>

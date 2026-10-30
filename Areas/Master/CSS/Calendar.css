@@ -1,0 +1,27 @@
+﻿.agGridSelect {
+    color: blue;
+    background-color: lightblue;
+    font-weight: bolder;
+    height: 32px;
+    width: 200px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 2px yellow solid;
+}
+
+.divCalendarScreen {
+    width: 50vw;
+    height: 80vh;
+    float: left;
+}
+
+.divCalendarGrid {
+    height: 80vh;
+    width: 50vw;
+}
+
+.divToolbar {
+    height: 35px;
+    width: 100%;
+}

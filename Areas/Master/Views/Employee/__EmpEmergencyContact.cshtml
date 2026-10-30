@@ -1,0 +1,62 @@
+﻿@model List<HRIS.Areas.Master.Models.EmpEmergencyContact>
+
+<div id="tblEmpDetail">
+    <table id="gridTable">
+        <caption>Employee Emergency Contact Detail</caption>
+        <thead>
+            <tr>
+                <th>Relation</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <select id="FRelationId" style="width: 200px;">
+                    <option value="">Select Relation</option>
+                    <option data-ng-repeat="c in lstRelation" value="{{c.RelationId}}">{{c.RelationName}}</option>
+                </select>
+            </td>
+            <td><input type="text" id="NoKName" maxlength="50" style="width: 250px;" onkeypress="return isText(event)" /></td>
+            <td><input type="text" id="NoKContactNo" maxlength="12" style="width: 150px;" onkeypress="return isNumberKey(event)" /></td>
+
+            <td>
+                <button type="button" ng-click="AddFNK()" class="saveLineTiny" title="Click to Save the current record " />
+                <button type="button" ng-click="ClearFNK()" class="UndoLineTiny" title="Click to undo the request " />
+                <input type="hidden" id="DetailId" style="width: 0.1px;" />
+                <input type="hidden" id="Status" style="width: 0.1px;" />
+                <input type="hidden" id="Row" style="width: 0.1px;" />
+            </td>
+        </tr>
+        <tbody ng-repeat="m in Employee.EmpEmergencyContactDetails">
+            <tr>
+                <td>
+                    <select disabled  style="width: 200px; background-color: transparent">                      
+                        <option ng-disabled="true" data-ng-repeat="c in lstRelation" value="{{c.RelationId}}"
+                                ng-selected="m.RelationId == c.RelationId">
+                            {{c.RelationName}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <span >{{m.NoKName}}</span>
+                </td>
+                <td>
+                    <span >{{m.NoKContactNo}}</span>
+                </td>
+
+                <td class="float-left" >
+                    <button type="button" ng-click="EditFNK(m,$index)" class="editLineTiny" title="Click to Edit the current record" />
+                    <button type="button"  ng-click="RemoveFNK($index)" class="deleteLineTiny" title="Click to Delete current record from row"  />
+                    <input type="hidden" ng-model="m.DetailId" style="width: 0.1px;" />
+                    <input type="hidden" ng-model="m.Status" style="width: 0.1px;" />
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+

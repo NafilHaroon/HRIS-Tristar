@@ -1,0 +1,59 @@
+﻿<div id="tblEmpDetail">
+    <table id="gridTable">
+        <caption>Employee Leaves Detail</caption>
+        <thead>
+            <tr>
+                <th>Leave</th>
+                <th>AllowedDays</th>
+                <th>DueDate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <select id="LeaveId" style="width: 200px;">
+                    <option value="">Select Leave</option>
+                    <option data-ng-repeat="c in lstLeaveType" value="{{c.LeaveId}}">{{c.LeaveName}}</option>
+                </select>
+            </td>
+            <td><input type="text" id="AllowedDays" maxlength="2" style="width: 30px;" onkeypress="return isNumberKey(event)" value="0" /></td>
+
+            <td>
+                <input type="text" oninput="return date(event,value)" maxlength="9" id="DueDate" class="dateField">
+            </td>
+
+            <td>
+                <button type="button" ng-click="AddLeave()" class="saveLineTiny" title="Click to Save the current record " />
+                <button type="button" ng-click="ClearLeave()" class="UndoLineTiny" title="Click to undo the request " />
+                <input type="hidden" id="DetailId" style="width: 0.1px;" />
+                <input type="hidden" id="Status" style="width: 0.1px;" />
+                <input type="hidden" id="Row" style="width: 0.1px;" />
+            </td>
+        </tr>
+
+        <tbody ng-repeat="m in Employee.LeaveEntitlement">
+            <tr>
+                <td>
+                    <select disabled style="width: 200px; background-color: transparent">
+                        <option ng-disabled="true" data-ng-repeat="c in lstLeaveType" value="{{c.LeaveId}}"
+                                ng-selected="m.LeaveId == c.LeaveId">
+                            {{c.LeaveName}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <span>{{m.AllowedDays}}</span>
+                </td>
+                <td>
+                    <span>{{m.DueDate}}</span>
+                </td>
+                <td class="float-left">
+                    <button type="button" ng-click="EditLeave(m,$index)" class="editLineTiny" title="Click to Edit the current record" />
+                    <button type="button" ng-click="RemoveLeave($index)" class="deleteLineTiny" title="Click to Delete current record from row" />
+                    <input type="hidden" ng-model="m.DetailId" style="width: 0.1px;" />
+                    <input type="hidden" ng-model="m.Status" style="width: 0.1px;" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

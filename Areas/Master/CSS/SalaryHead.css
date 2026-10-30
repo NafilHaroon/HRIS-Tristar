@@ -1,0 +1,28 @@
+﻿
+.agGridSelect {
+    color: blue;
+    background-color: lightblue;
+    font-weight: bolder;
+    height: 32px;
+    width: 200px;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 2px yellow solid;
+}
+
+.divWorkerTypeScreen {
+    height: 40vh;
+    width: 40vw;
+    float: left;
+}
+
+.divWorkerTypeGrid {
+    height: 40vh;
+    width: 30vw;
+}
+
+.divToolbar {
+    height: 35px;
+    width: 100%;
+}
